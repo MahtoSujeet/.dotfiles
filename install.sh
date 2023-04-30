@@ -41,6 +41,21 @@ while true; do
 done
 
 
+# For termux only
+if [ -n "$TERMUX_VERSION" ]; then
+  echo "Setting default termux screen..."
+  motd_path="/data/data/com.termux/files/usr/etc/" 
+
+  if [ -e $motd_path/motd ]; then
+    echo "motd (default screen) file already exists, removing it first..."
+    rm $motd_path/motd
+  fi
+
+  ln -s "$HOME/.dotfiles/forTermux/motd" "$motd_path" 
+  echo "Added new motd file"
+
+fi
+
 # Installing nvim config
 echo "Installing Neovim configurations..."
 
@@ -51,4 +66,30 @@ if [ ! -d "$config_dir" ]; then
 	mkdir -p "$config_dir"
 fi
 
-ln -s "$HOME/.dotfiles/nvim" "$config_dir"
+if [ -d "$config_dir/nvim" ]; then
+  echo "nvim config already exists!"
+
+  while true; do
+    read -p "Do you want to take backup and [o]verwrite or [s]kip instalation? (o/s)" os
+
+    case "$os" in
+      [oO]* ) echo "moving nvim/ to nvim.bak/"
+        mv $config_dir/nvim $config_dir/nvim.bak
+
+        echo "Creating symbolic link"
+        ln -s "$HOME/.dotfiles/nvim" "$config_dir"
+        echo "Done!"
+      break;;
+
+      [sS]* ) echo "Skiping..."
+      break;;
+      *) echo "Invalid input!"
+      ;;
+    esac
+
+  done
+fi
+
+
+
+echo "\n\nAll set.\n"
