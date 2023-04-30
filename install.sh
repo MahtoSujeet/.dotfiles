@@ -1,39 +1,54 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/bash
 
-cd $HOME
+cd $HOME 
 
-printf "Upgrading Packages."
+echo "Upgrading Packages..."
 apt update && apt upgrade -y
 
-printf "Installing required packages."
+echo "Installing required packages."
 apt install git -y
-apt install curl -y
-apt install zsh -y
-apt install python -y
 apt install neovim -y
-apt install nodejs -y
 apt install tree -y
-apt install lua-language-server -y
 
-pip install --upgrade pip
-pip install wheel
-pip install black
 
-# Lunarvim setup
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+while true; do
+	read -p "Do you want to install Python? (y/n)" yn
+	case $yn in
+		[yY]* ) 
+			apt install python -y
+			pip install --upgrade pip
+			pip install wheel
+			break;;
 
-if [[ ! -d "~/.config/lvim" ]]
-then
-  mkdir "~/.config/lvim"
+		[nN]* ) echo "Skipped Python instalation."; break;;
+		* ) echo "Invalid input!";;
+	
+	esac
+done
+
+
+while true; do
+	read -p "Do you want to install Nodejs? (y/n)" yn
+	case $yn in
+		[yY]* ) 
+			apt install nodejs -y
+			break;;
+
+		[nN]* ) echo "Skipped Python instalation."; break;;
+		* ) echo "Invalid input!";;
+	
+	esac
+done
+
+
+# Installing nvim config
+echo "Installing Neovim configurations..."
+
+config_dir="$HOME/.config"
+
+if [ ! -d "$config_dir" ]; then
+	echo "$config_dir dir doesn't exist. Creating..."
+	mkdir -p "$config_dir"
 fi
-ln -sf ~/.dotfiles/lvim/config.lua ~/.config/lvim/config.lua
 
-mv .local/bin/lvim ../usr/bin/
-
-# # ZSH setup
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" -y
-# chsh -s zsh
-ln -sf ~/.dotfiles/.zshrc ~/.zshrc
-
-ln -sf ~/.dotfiles/motd ~/../usr/etc/motd
-printf "\n\nScript complete. Restart terminal.\n"
+ln -s "$HOME/.dotfiles/nvim" "$config_dir"
