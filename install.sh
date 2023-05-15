@@ -3,19 +3,19 @@
 cd $HOME 
 
 echo "Upgrading Packages..."
-apt update && apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 
 echo "Installing required packages."
-apt install git -y
-apt install neovim -y
-apt install tree -y
+sudo apt install git -y
+sudo apt install neovim -y
+sudo apt install tree -y
 
 
 while true; do
 	read -p "Do you want to install Python? (y/n)" yn
 	case $yn in
 		[yY]* ) 
-			apt install python -y
+			sudo apt install python -y
 			pip install --upgrade pip
 			pip install wheel
 			break;;
@@ -31,7 +31,7 @@ while true; do
 	read -p "Do you want to install Nodejs? (y/n)" yn
 	case $yn in
 		[yY]* ) 
-			apt install nodejs -y
+			sudo apt install nodejs -y
 			break;;
 
 		[nN]* ) echo "Skipped Python instalation."; break;;
