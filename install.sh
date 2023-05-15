@@ -3,7 +3,7 @@
 cd $HOME 
 
 echo "Upgrading Packages..."
-sudo apt update && sudo apt upgrade -y
+# sudo apt update && sudo apt upgrade -y
 
 echo "Installing required packages."
 sudo apt install git -y
@@ -16,6 +16,7 @@ while true; do
 	case $yn in
 		[yY]* ) 
 			sudo apt install python -y
+      sudo apt-get install python-dev python-pip python3-dev python3-pip
 			pip install --upgrade pip
 			pip install wheel
 			break;;
@@ -88,8 +89,12 @@ if [ -d "$config_dir/nvim" ]; then
     esac
 
   done
+  
+else
+  echo "Creating symbolic link"
+  ln -s "$HOME/.dotfiles/nvim" "$config_dir"
+  echo "Done!"
+	
 fi
-
-
 
 echo "\n\nAll set.\n"
