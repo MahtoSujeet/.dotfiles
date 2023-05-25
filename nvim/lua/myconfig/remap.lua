@@ -17,7 +17,6 @@ set("n", "<C-Down>", ":resize +2<CR>")
 set("n", "<C-Left>", ":vertical resize -2<CR>")
 set("n", "<C-Right>", ":vertical resize +2<CR>")
 
-set("n", "<leader>e", vim.cmd.Ex)
 set("i", "jk", "<esc>")
 set("i", "kj", "<esc>")
 
@@ -27,4 +26,7 @@ set("i", "<c-s>", "<esc>:w<cr>")
 set("n", "<leader>q", ":q!<cr>")
 
 -- To open config file
-set("n", "<leader>nc", ":tabnew ~/.config/nvim/<cr>")
+set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<cr>")
+
+-- open terminal in new tab
+set("n", "<leader>t", ":tabnew<cr>:terminal<cr>i")

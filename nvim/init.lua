@@ -19,6 +19,5 @@ vim.g.mapleader = " "
 ------------------------------------------------
 
 require("myconfig")
-
 require("lazy").setup("plugins")
 require("after.plugins")
