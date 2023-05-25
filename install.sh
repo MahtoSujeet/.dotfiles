@@ -12,18 +12,13 @@ sudo apt update
 sudo apt install git -y
 sudo apt install tree -y
 
-# TODO add git, neovim, node binaries
-
-
-
 while true; do
 	read -p "Do you want to install Python? (y/n)" yn
 	case $yn in
 		[yY]* ) 
-			sudo apt install python -y
-      sudo apt install python-dev python-pip python3-dev python3-pip
-			pip install --upgrade pip
-			pip install wheel
+			sudo apt install python3 -y
+			pip3 install --upgrade pip
+			pip3 install wheel
 			break;;
 
 		[nN]* ) echo "Skipped Python instalation."; break;;
@@ -32,26 +27,6 @@ while true; do
 	
 	esac
 done
-
-
-# NOde will be auto installed once we put path
-
-# while true; do
-# 	read -p "Do you want to install NodeJS? (y/n)" yn
-# 	case $yn in
-# 		[yY]* ) 
-#
-#       # TODO Add node binary
-# 			break;;
-#
-# 		[nN]* ) echo "Skipped NodeJS instalation."; break;;
-#
-# 		* ) echo "Invalid input!";;
-# 
-# 	esac
-# done
-#
-#
 
 
 ################ Installing nvim config ##################
@@ -113,5 +88,10 @@ if [ -n "$TERMUX_VERSION" ]; then
 
 fi
 #######################################################
+
+############ Oh my zsh #####################
+sudo apt install zsh -y
+source $HOME/.dotfiles/ohmyzsh/install.sh
+ln -s $HOME/.dotfiles/ohmyzsh/.zshrc $HOME/.zshrc
 
 echo "\n\nAll set.\n"
