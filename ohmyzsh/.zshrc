@@ -1,7 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/.dotfiles/neovim/usr/bin:"\
-"$HOME/.dotfiles/nodejs/bin:"\
-"$PATH"
+export PATH="$HOME/.dotfiles/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -11,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="random"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -106,6 +104,10 @@ alias vi=nvim
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias gs="git status"
+alias ytdl="yt-dlp --merge-output-format mp4 -f \"bestvideo+bestaudio[ext=m4a]/best\""
+alias up="sudo apt update && sudo apt upgrade"
+alias ai="sudo apt install"
+alias ar="sudo apt remove"
 
 
 ####### Hide username in agnoster theme ##########
@@ -117,5 +119,14 @@ prompt_context() {
 
 
 # Startup
-echo "Welcome back Sujeet.\n"
-screenfetch
+echo "
+
+ _   _ _                 _           ____  ____    ___  _  _     _   _____ ____  
+| | | | |__  _   _ _ __ | |_ _   _  |___ \|___ \  / _ \| || |   | | |_   _/ ___| 
+| | | | '_ \| | | | '_ \| __| | | |   __) | __) || | | | || |_  | |   | | \___ \ 
+| |_| | |_) | |_| | | | | |_| |_| |  / __/ / __/ | |_| |__   _| | |___| |  ___) |
+ \___/|_.__/ \__,_|_| |_|\__|\__,_| |_____|_____(_)___/   |_|   |_____|_| |____/ 
+                                                                                
+
+"
+
