@@ -105,6 +105,7 @@ alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias gs="git status"
 alias ytdl="yt-dlp --merge-output-format mp4 -f \"bestvideo+bestaudio[ext=m4a]/best\""
+alias aytdl="yt-dlp -x --audio-format mp3"
 alias up="sudo apt update && sudo apt upgrade"
 alias ai="sudo apt install"
 alias ar="sudo apt remove"
@@ -119,14 +120,5 @@ prompt_context() {
 
 
 # Startup
-echo "
-
- _   _ _                 _           ____  ____    ___  _  _     _   _____ ____  
-| | | | |__  _   _ _ __ | |_ _   _  |___ \|___ \  / _ \| || |   | | |_   _/ ___| 
-| | | | '_ \| | | | '_ \| __| | | |   __) | __) || | | | || |_  | |   | | \___ \ 
-| |_| | |_) | |_| | | | | |_| |_| |  / __/ / __/ | |_| |__   _| | |___| |  ___) |
- \___/|_.__/ \__,_|_| |_|\__|\__,_| |_____|_____(_)___/   |_|   |_____|_| |____/ 
-                                                                                
-
-"
-
+# neofetch --ascii_distro windows7
+fastfetch -l debian
