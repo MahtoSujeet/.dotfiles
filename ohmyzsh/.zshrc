@@ -121,4 +121,4 @@ prompt_context() {
 
 # Startup
 # neofetch --ascii_distro windows7
-fastfetch -l debian
+fastfetch
