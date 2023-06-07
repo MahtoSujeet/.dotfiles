@@ -2,21 +2,17 @@
 
 cd $HOME 
 echo "Upgrading Packages..."
-sudo apt update && sudo apt upgrade -y
 
 
 echo "Installing neccessay packages..."
-sudo add-apt-repository ppa:git-core/ppa
-sudo apt update
 
-sudo apt install git -y
-sudo apt install tree -y
+sudo zypper install tree 
 
 while true; do
 	read -p "Do you want to install Python? (y/n)" yn
 	case $yn in
 		[yY]* ) 
-			sudo apt install python3 -y
+			sudo zypper install python3 
 			pip3 install --upgrade pip
 			pip3 install wheel
 			break;;
@@ -90,7 +86,7 @@ fi
 #######################################################
 
 ############ Oh my zsh #####################
-sudo apt install zsh -y
+sudo zypper install zsh 
 source $HOME/.dotfiles/ohmyzsh/install.sh
 ln -s $HOME/.dotfiles/ohmyzsh/.zshrc $HOME/.zshrc
 
