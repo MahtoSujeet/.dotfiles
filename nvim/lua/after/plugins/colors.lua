@@ -1,13 +1,14 @@
 function ColorMyPencils(color)
-  color = color or "github_dark_high_contrast"
-  local transparent = false
+  -- color = color or "github_dark_high_contrast"
+  color = color or "gruvbox"
+  local transparent = true
 
   vim.cmd.colorscheme(color)
 
   -- To make bg transparent
   if (transparent) then
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })      -- 0 means global
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }) -- 0 means global
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" }) -- 0 means global
+    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }) -- 0 means global
   end
 end
 

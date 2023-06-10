@@ -2,8 +2,8 @@ local set = vim.keymap.set
 
 vim.g.mapleader = " "
 
-set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
-set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+-- set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+-- set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Better window movement
 set("n", "<C-h>", "<C-w>h")
