@@ -1,7 +1,10 @@
 # My Linux Environment Dotfiles
 
 ## My terminal config. It incudes ZSH and Neovim.
-Note: This config assumes you are using `zypper` package manager.
+
+### Prerequisites
+1. Make sure to clone this repo in `$HOME` directory.
+1. This config assumes you are using `pacman` package manager.
 To use other package manager (such as apt), make changes in `install.sh` accordingly.
 No other changes it required.
 
@@ -9,11 +12,12 @@ No other changes it required.
 
 ### Steps to install:
 
-* clone the repo in your `$HOME` directory.
-* then do `cd .dotfiles`
+* Clone the repo in your `$HOME` directory.
+* Do `cd .dotfiles`
 * `./install.sh` OR `bash install.sh`
 * Now it will install some dependencies automatically.
-* Restart terminal.
+* After the script is done doing its work, open `nvim` for once so that it install all the plugins.
+* Exit `Neovim` (`:q!`) and restart terminal.
 * Done!
 
 # Minimal configs
@@ -24,7 +28,6 @@ No other changes it required.
 ├── install.sh
 ├── nvim
 │   ├── init.lua
-│   ├── lazy-lock.json
 │   ├── lua
 │   │   ├── after
 │   │   │   └── plugins
@@ -38,10 +41,12 @@ No other changes it required.
 │   │   └── plugins
 │   │       ├── autopairs.lua
 │   │       ├── colorizer.lua
-│   │       ├── githubTheme.lua
+│   │       ├── github-nvim-theme.lua
+│   │       ├── gruvbox.lua
 │   │       ├── leap.lua
+│   │       ├── lualine.lua
 │   │       ├── neo-tree.lua
-│   │       ├── nvimComment.lua
+│   │       ├── nvim-comment.lua
 │   │       ├── tailwind-sorter.lua
 │   │       ├── telescope.lua
 │   │       ├── transparent.lua
@@ -52,7 +57,6 @@ No other changes it required.
 │   └── install.sh
 └── README.md
 
-
-9 directories, 24 files
+9 directories, 25 files
 
 ```

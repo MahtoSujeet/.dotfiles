@@ -1,18 +1,18 @@
 #!/bin/bash
 
-cd $HOME 
-echo "Upgrading Packages..."
 
+cd $HOME 
 
 echo "Installing neccessay packages..."
 
-sudo zypper install tree 
+sudo pacman -Sy tree npm
+
 
 while true; do
 	read -p "Do you want to install Python? (y/n)" yn
 	case $yn in
 		[yY]* ) 
-			sudo zypper install python3 
+			sudo pacman -S python3 
 			pip3 install --upgrade pip
 			pip3 install wheel
 			break;;
@@ -86,8 +86,12 @@ fi
 #######################################################
 
 ############ Oh my zsh #####################
-sudo zypper install zsh 
-source $HOME/.dotfiles/ohmyzsh/install.sh
+
+rm $HOME/.zshrc
 ln -s $HOME/.dotfiles/ohmyzsh/.zshrc $HOME/.zshrc
+sudo pacman -S zsh
+
+source $HOME/.dotfiles/ohmyzsh/install.sh
+
 
 echo "\n\nAll set.\n"

@@ -1,7 +1,7 @@
 function ColorMyPencils(color)
   -- color = color or "github_dark_high_contrast"
   color = color or "gruvbox"
-  local transparent = true
+  local transparent = false
 
   vim.cmd.colorscheme(color)
 
