@@ -106,9 +106,6 @@ alias yd="yarn dev"
 alias gs="git status"
 alias ytdl="yt-dlp --merge-output-format mp4 -f \"bestvideo+bestaudio[ext=m4a]/best\""
 alias aytdl="yt-dlp -x --audio-format mp3"
-alias up="sudo apt update && sudo apt upgrade"
-alias ai="sudo apt install"
-alias ar="sudo apt remove"
 
 
 ####### Hide username in agnoster theme ##########
@@ -121,3 +118,4 @@ prompt_context() {
 
 # Startup
 neofetch
+
