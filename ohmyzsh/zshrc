@@ -78,16 +78,17 @@ plugins=(
   zsh-syntax-highlighting
   zsh-history-substring-search
   you-should-use
-  auto-notify
+  # auto-notify
 )
 
+source $ZSH/oh-my-zsh.sh
+
 # ctrl tab for autosuggest complete
-# bindkey '^I'      autosuggest-accept #not working
+bindkey "^I" autosuggest-accept
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -134,7 +135,6 @@ alias vi=nvim
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias gs="git status"
-
 
 
 ####### Hide username in agnoster theme ##########
