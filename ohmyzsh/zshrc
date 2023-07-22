@@ -121,7 +121,7 @@ alias spss="sudo pacman -Ss"
 alias spsi="sudo pacman -Si"
 alias spqs="sudo pacman -Qs"
 alias sprs="sudo pacman -Rs"
-alias outdated="sudo pacman -Sy && pacman -Qu"
+alias outdated="sudo paru -Sy && paru -Qu"
 
 # ytdl
 alias ytv-best="yt-dlp --merge-output-format mp4 -f \"bestvideo+bestaudio[ext=m4a]/best\""
@@ -130,6 +130,7 @@ alias yta="yt-dlp -x --audio-format mp3"
 # git
 alias gd="git diff"
 alias gs="git status"
+alias gcm="git commit -m"
 
 # other
 # alias neofetch="clear && neofetch"
