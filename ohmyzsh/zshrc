@@ -119,7 +119,7 @@ alias spss="sudo pacman -Ss"
 alias spsi="sudo pacman -Si"
 alias spqs="sudo pacman -Qs"
 alias sprs="sudo pacman -Rs"
-alias outdated="sudo paru -Sy && paru -Qu"
+alias outdated="paru -Sy && paru -Qu"
 
 # ytdl
 alias ytv-best="yt-dlp --merge-output-format mp4 -f \"bestvideo+bestaudio[ext=m4a]/best\""
