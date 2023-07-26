@@ -127,6 +127,7 @@ alias yta="yt-dlp -x --audio-format mp3"
 alias gd="git diff"
 alias gs="git status"
 alias gcm="git commit -m"
+alias gco="git checkout"
 
 # other
 # alias neofetch="clear && neofetch"
