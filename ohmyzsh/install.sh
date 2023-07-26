@@ -74,7 +74,7 @@ BRANCH=${BRANCH:-master}
 # Other options
 CHSH=${CHSH:-yes}
 RUNZSH=${RUNZSH:-yes}
-KEEP_ZSHRC=${KEEP_ZSHRC:-no}
+KEEP_ZSHRC=${KEEP_ZSHRC:-yes}
 
 
 command_exists() {
@@ -542,6 +542,11 @@ EOF
     echo "${FMT_YELLOW}Run zsh to try it out.${FMT_RESET}"
     exit
   fi
+  # plugins
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+
 
   exec zsh -l
 }
