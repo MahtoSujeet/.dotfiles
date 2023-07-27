@@ -94,7 +94,7 @@ fi
 ############ Oh my zsh #####################
 
 rm $HOME/.zshrc
-sudo pacman -S zsh
+sudo pacman -S zsh zsh-completions
 
 # plugins
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
