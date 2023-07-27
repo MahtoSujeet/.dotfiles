@@ -145,5 +145,5 @@ prompt_context() {
 
 
 # Startup
-neofetch
+clear && neofetch
 
