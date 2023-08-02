@@ -134,6 +134,7 @@ alias gco="git checkout"
 alias vi=nvim
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
+alias neofetch=fastfetch
 
 
 ####### Hide username in agnoster theme ##########
@@ -145,5 +146,5 @@ prompt_context() {
 
 
 # Startup
-clear && neofetch
+clear && fastfetch
 
