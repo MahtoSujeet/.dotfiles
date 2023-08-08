@@ -101,7 +101,7 @@ sudo pacman -S zsh zsh-completions
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 
-ln -s $HOME/.dotfiles/ohmyzsh/.zshrc $HOME/.zshrc
+ln -s $HOME/.dotfiles/ohmyzsh/dot-zshrc $HOME/.zshrc
 source $HOME/.dotfiles/ohmyzsh/install.sh
 
 
