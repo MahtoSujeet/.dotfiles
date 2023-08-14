@@ -1,13 +1,12 @@
 #!/bin/bash
+# vim:foldmethod=marker
 
 
 cd $HOME 
-
 echo "Installing neccessay packages..."
+sudo pacman -Sy tree kitty
 
-sudo pacman -Sy tree npm kitty
-
-
+#: Python Installation {{{
 while true; do
 	read -p "Do you want to install Python? (y/n)" yn
 	case $yn in
@@ -23,9 +22,11 @@ while true; do
 	
 	esac
 done
+#: }}}
 
-
+#: Neovim {{{
 ################ Installing nvim config ##################
+sudo pacman -S neovim npm
 echo "Installing Neovim configurations..."
 
 config_dir="$HOME/.config"
@@ -65,16 +66,17 @@ else
   echo "Done!"
 	
 fi
+#: }}}
 
-
+#: Kitty {{{
 ##### kitty config #############
 
 ln -s $HOME/.dotfiles/kitty $HOME/.config/
 
 ##############################
+#: }}}
 
-
-
+#: Termux only {{{
 ################ For termux only #####################
 if [ -n "$TERMUX_VERSION" ]; then
   echo "Setting default termux screen..."
@@ -90,9 +92,10 @@ if [ -n "$TERMUX_VERSION" ]; then
 
 fi
 #######################################################
+#: }}}
 
+#: Oh my zsh {{{
 ############ Oh my zsh #####################
-
 rm $HOME/.zshrc
 sudo pacman -S zsh zsh-completions
 
@@ -100,9 +103,8 @@ sudo pacman -S zsh zsh-completions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
-
 ln -s $HOME/.dotfiles/ohmyzsh/dot-zshrc $HOME/.zshrc
 source $HOME/.dotfiles/ohmyzsh/install.sh
-
+#: }}}
 
 echo "\n\nAll set.\n"
