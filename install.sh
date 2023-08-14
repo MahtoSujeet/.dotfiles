@@ -6,6 +6,10 @@ cd $HOME
 echo "Installing neccessay packages..."
 sudo pacman -Sy tree kitty
 
+#: Pacman config {{{
+sudo ln -s $HOME/.dotfiles/pacman/pacman.conf /etc
+#}}}
+
 #: Python Installation {{{
 while true; do
 	read -p "Do you want to install Python? (y/n)" yn
