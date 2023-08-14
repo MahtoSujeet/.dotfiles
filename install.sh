@@ -76,6 +76,10 @@ ln -s $HOME/.dotfiles/kitty $HOME/.config/
 ##############################
 #: }}}
 
+#: Fastfetch {{{
+ln -s $HOME/.dotfiles/fastfetch $HOME/.config
+#}}}
+
 #: Termux only {{{
 ################ For termux only #####################
 if [ -n "$TERMUX_VERSION" ]; then
