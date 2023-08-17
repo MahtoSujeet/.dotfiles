@@ -1,62 +1,84 @@
 # My Linux Environment Dotfiles
 
-## My terminal config. It incudes ZSH and Neovim.
+## My terminal config. It incudes OhMyZSH, Neovim and Kitty.
 
 ### Prerequisites
-1. Make sure to clone this repo in `$HOME` directory.
 1. This config assumes you are using `pacman` package manager.
-To use other package manager (such as apt), make changes in `install.sh` accordingly.
 No other changes it required.
+1. `git` must be installed
 
 --------------------------------
 
 ### Steps to install:
 
-* Clone the repo in your `$HOME` directory.
-* Do `cd .dotfiles`
-* `./install.sh` OR `bash install.sh`
-* Now it will install some dependencies automatically.
-* After the script is done doing its work, open `nvim` for once so that it install all the plugins.
-* Exit `Neovim` (`:q!`) and restart terminal.
-* Done!
+Run the following piece of code in `$HOME` directory.
+```bash
+git clone --bare https://github.com/MahtoSujeet/.dotfiles.git $HOME/.dotfiles
+function config {
+   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+}
+mkdir -p .config-backup
+config checkout
+if [ $? = 0 ]; then
+  echo "Checked out config.";
+  else
+    echo "Backing up pre-existing dot files.";
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+fi;
+config checkout
+config config status.showUntrackedFiles no
+```
+It takes the backup of current config files in `.config-backup` folder and installs remote config.
+
 
 # Minimal configs
 ```
-.dotfiles
-├── forTermux
-│   └── motd
-├── install.sh
-├── nvim
-│   ├── init.lua
-│   ├── lua
-│   │   ├── after
-│   │   │   └── plugins
-│   │   │       ├── autocmds.lua
-│   │   │       ├── colors.lua
-│   │   │       └── init.lua
-│   │   ├── myconfig
-│   │   │   ├── init.lua
-│   │   │   ├── remap.lua
-│   │   │   └── set.lua
-│   │   └── plugins
-│   │       ├── autopairs.lua
-│   │       ├── colorizer.lua
-│   │       ├── github-nvim-theme.lua
-│   │       ├── gruvbox.lua
-│   │       ├── leap.lua
-│   │       ├── lualine.lua
-│   │       ├── neo-tree.lua
-│   │       ├── nvim-comment.lua
-│   │       ├── tailwind-sorter.lua
-│   │       ├── telescope.lua
-│   │       ├── transparent.lua
-│   │       ├── treesitter.lua
-│   │       └── zerolsp.lua
-│   └── README.md
-├── ohmyzsh
-│   └── install.sh
-└── README.md
-
-9 directories, 25 files
-
+$HOME
+└─.config
+  ├── brave-flags.conf
+  ├── fastfetch
+  │   ├── arch.png
+  │   └── config.conf
+  ├── kitty
+  │   ├── kitty.conf
+  │   ├── kitty-gruvbox-theme
+  │   │   ├── gruvbox_dark.conf
+  │   │   ├── gruvbox_dark_hard.conf
+  │   │   ├── gruvbox_dark_soft.conf
+  │   │   ├── gruvbox_light.conf
+  │   │   ├── gruvbox_light_hard.conf
+  │   │   └── gruvbox_light_soft.conf
+  │   └── tokyonight-theme
+  │       └── night.conf
+  └── nvim
+     ├── init.lua
+     ├── lazy-lock.json
+     ├── lua
+     │   ├── after
+     │   │   └── plugins
+     │   │       ├── autocmds.lua
+     │   │       ├── colors.lua
+     │   │       └── init.lua
+     │   ├── myconfig
+     │   │   ├── init.lua
+     │   │   ├── remap.lua
+     │   │   └── set.lua
+     │   └── plugins
+     │       ├── alpha.lua
+     │       ├── autopairs.lua
+     │       ├── colorizer.lua
+     │       ├── diffview-nvim.lua
+     │       ├── github-nvim-theme.lua
+     │       ├── gruvbox.lua
+     │       ├── leap.lua
+     │       ├── lualine.lua
+     │       ├── nvim-comment.lua
+     │       ├── nvim-tree.lua
+     │       ├── tailwind-sorter.lua
+     │       ├── telescope.lua
+     │       ├── tokyonight-theme.lua
+     │       ├── transparent.lua
+     │       ├── treesitter.lua
+     │       └── zerolsp.lua
+     └── README.md
 ```
