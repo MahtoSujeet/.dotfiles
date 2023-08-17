@@ -31,12 +31,22 @@ It takes the backup of current config files in `.config-backup` folder and insta
 
 
 # Required Packages
-`neovim npm kitty zsh zsh-completions`
+```
+neovim npm kitty zsh zsh-completions
+```
+
+## Auto Screen rotate
+```iio-sensor-proxy```
+
+## Bluetooth
+```pulseaudio-bluetooth```
 
 ## OhMyZSH
 ### Plugins
-`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting`
-`git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions`
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+```
 
 
 # Minimal configs
