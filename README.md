@@ -3,9 +3,8 @@
 ## My terminal config. It incudes OhMyZSH, Neovim and Kitty.
 
 ### Prerequisites
-1. This config assumes you are using `pacman` package manager.
-No other changes it required.
 1. `git` must be installed
+1. Your brain must be present in skull.
 
 --------------------------------
 
