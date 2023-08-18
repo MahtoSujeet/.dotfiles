@@ -32,14 +32,16 @@ It takes the backup of current config files in `.config-backup` folder and insta
 
 # Required Packages
 ```
-neovim npm kitty zsh zsh-completions
+neovim npm kitty zsh zsh-completions ntfs-3g
 ```
 
 ## Auto Screen rotate
 ```iio-sensor-proxy```
 
 ## Bluetooth
-```pulseaudio-bluetooth```
+1. Install ```bluez bluez-utils pulseaudio-bluetooth```
+1. `sudo systemctl enable bluetooth.service`
+1. `sudo systemctl start bluetooth.service`
 
 ## OhMyZSH
 ### Plugins
@@ -47,6 +49,12 @@ neovim npm kitty zsh zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 ```
+
+## Dolphin thumbnail fix
+* Install `ffmpegthumbs` package.
+
+## Other Apps
+* `Okular` - PDF Reader
 
 
 # Minimal configs
