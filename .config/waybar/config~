@@ -1,0 +1,17 @@
+{
+  "include": "~/.config/hypr/waybar/modules",
+  "layer": "top",
+  //"mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "top",
+  "spacing": 5,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-left": 0,
+  "margin-right": 0,
+
+  "modules-left": ["wlr/workspaces"],
+  "modules-right": ["disk","memory","cpu","custom/updater", "pulseaudio", "clock", "tray","network"],
+  
+}
