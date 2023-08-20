@@ -155,7 +155,7 @@ ex ()
 alias sps="sudo pacman -S --needed"
 alias spss="sudo pacman -Ss"
 alias spsi="sudo pacman -Si"
-alias sprs="sudo pacman -Rs"
+alias sprns="sudo pacman -Rns"
 alias pqs="pacman -Qs"
 alias outdated="paru -Sy && paru -Qu"
 

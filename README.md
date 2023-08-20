@@ -32,7 +32,7 @@ It takes the backup of current config files in `.config-backup` folder and insta
 
 # Required Packages
 ```
-neovim npm kitty zsh zsh-completions ntfs-3g
+neovim npm kitty zsh zsh-completions ntfs-3g intel-ucode
 ```
 
 ## Auto Screen rotate
@@ -55,4 +55,5 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 
 ## Other Apps
 * `Okular` - PDF Reader
+* `smplayer` - Video Player (VLC sucks in Linux)
 
