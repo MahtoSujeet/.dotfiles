@@ -13,26 +13,26 @@
 Run the following piece of code in `$HOME` directory.
 ```bash
 git clone --bare https://github.com/MahtoSujeet/.dotfiles.git $HOME/.dotfiles
-function config {
-   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+function dotfiles {
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
-mkdir -p .config-backup
-config checkout
+mkdir -p .dotfiles-backup
+dotfiles checkout
 if [ $? = 0 ]; then
-  echo "Checked out config.";
+  echo "Checked out dotfiles.";
   else
     echo "Backing up pre-existing dot files.";
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
 fi;
-config checkout
-config config status.showUntrackedFiles no
+dotfiles checkout
+dotfiles config status.showUntrackedFiles no
 ```
-It takes the backup of current config files in `.config-backup` folder and installs remote config.
+It takes the backup of current config files in `.dotfiles-backup` folder and installs remote config.
 
 
 # Required Packages
 ```
-neovim npm kitty zsh zsh-completions ntfs-3g
+neovim npm kitty zsh zsh-completions ntfs-3g intel-ucode
 ```
 
 ## Auto Screen rotate
@@ -55,4 +55,12 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 
 ## Other Apps
 * `Okular` - PDF Reader
+* `smplayer` - Video Player (VLC sucks in Linux)
+
+## To mount NTFS
+1. Get UUID of disk with `lsblk -f`
+1. Add following to `/etc/fstab`
+```
+UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=0022  0 0
+```
 
