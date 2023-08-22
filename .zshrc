@@ -1,11 +1,58 @@
 # vim:foldmethod=marker
-export EDITOR='nvim'
-## Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
+
+#: ex = EXtractor for all kinds of archives {{{
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   tar xf $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+#: }}}
+
+#: Completions {{{
+autoload -Uz compinit promptinit
+compinit
+
+# Plguins
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+zstyle ':completion:*' menu select # menu for autocompletes
+# completions in sudo
+zstyle ':completion::complete:*' gain-privileges 1
+
+
+# By doing this, only the past commands matching the current line up
+# to the current cursor position will be shown when Up or Down keys are pressed.
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+#}}}
 
 #: Keybindings {{{
 # create a zkbd compatible hash;
@@ -38,7 +85,6 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
-
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
@@ -48,71 +94,18 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+
+##### My bindings #############
+bindkey "\t" autosuggest-accept
 #: }}}
-
-# to set truecolor
-[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
-
-
-
-#: ex = EXtractor for all kinds of archives {{{
-# # usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   tar xf $1    ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-#: }}}
-
-#: Completions {{{
-# Plguins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-#
-autoload -Uz compinit promptinit
-compinit
-
-zstyle ':completion:*' menu select # menu for autocompletes
-# completions in sudo
-zstyle ':completion::complete:*' gain-privileges 1
-
-
-# By doing this, only the past commands matching the current line up
-# to the current cursor position will be shown when Up or Down keys are pressed.
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
-
-#}}}
-
-promptinit
-# This will set the default prompt to the walters theme
-prompt walters
 
 #: Aliases {{{
+# Look and feel
+alias ls="ls --color"
+alias grep="grep --color"
+alias ..="cd .."
+alias ...="cd ../.."
+
 # pacman
 alias sps="sudo pacman -S --needed"
 alias spss="sudo pacman -Ss"
@@ -141,6 +134,19 @@ alias vi=nvim
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias neofetch=fastfetch
+#}}}
+
+#: Look and Feel {{{
+# to set truecolor
+[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
+
+promptinit
+# This will set the default prompt to the walters theme
+prompt walters
+#}}}
+
+#: Configs {{{
+export EDITOR='nvim'
 #}}}
 
 #: Fixes {{{
