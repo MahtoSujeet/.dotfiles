@@ -4,14 +4,14 @@
   "mode": "dock",
   "exclusive": true,
   "passthrough": false,
-  "position": "top",
+  "position": "bottom",
   "spacing": 5,
   "fixed-center": true,
   "ipc": true,
   "margin-left": 0,
   "margin-right": 0,
 
-  "modules-left": ["wlr/workspaces"],
-  "modules-right": ["disk","memory","cpu", "pulseaudio", "battery", "clock", "network", "tray"],
+  "modules-left": ["waybar","wlr/workspaces"],
+  "modules-right": ["disk","memory","cpu","pulseaudio","battery","clock","network","tray"],
   
 }
