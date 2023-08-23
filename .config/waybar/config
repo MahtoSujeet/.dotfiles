@@ -11,7 +11,7 @@
   "margin-left": 0,
   "margin-right": 0,
 
-  "modules-left": ["waybar","wlr/workspaces"],
+  "modules-left": ["custom/menu","wlr/workspaces"],
   "modules-right": ["disk","memory","cpu","pulseaudio","battery","clock","network","tray"],
   
 }

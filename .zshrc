@@ -134,6 +134,7 @@ alias vi=nvim
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias neofetch=fastfetch
+alias history="fc -li 1"
 #}}}
 
 #: Look and Feel {{{
@@ -147,6 +148,18 @@ prompt walters
 
 #: Configs {{{
 export EDITOR='nvim'
+
+# zsh history
+export SAVEHIST=1000
+export HISTFILE=~/.zsh_history
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+
+# immediate appent to history
+setopt INC_APPEND_HISTORY
+setopt appendhistory
+
+setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
 #}}}
 
 #: Fixes {{{
