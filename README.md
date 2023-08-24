@@ -82,8 +82,13 @@ It takes the backup of current config files in `.dotfiles-backup` folder and ins
 1. `sudo systemctl enable bluetooth.service`
 1. `sudo systemctl start bluetooth.service`
 
-## Dolphin thumbnail fix
-* Install `ffmpegthumbs` package.
+## Thumbnail fix
+* Dolphin - Install `ffmpegthumbs` package.
+* Thunar/Nautilus - Install `ffmpeg ffmpegthumbnailer gst-libav`
+
+In case insalling these alone doesn't work, remove `~/.thumbnails`,
+then `ln -s $HOME/.cache/thumbnails $HOME/.thumbnails`
+
 
 ## To mount NTFS
 1. Get UUID of disk with `lsblk -f`
