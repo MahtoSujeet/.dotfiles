@@ -36,6 +36,10 @@ compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# case insensitive path-completion
+# NOTE doesnt work with autosuggest tab key binding
+# zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 
+
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 zstyle ':completion:*' menu select # menu for autocompletes
@@ -141,9 +145,10 @@ alias history="fc -li 1"
 # to set truecolor
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
 
-promptinit
+# promptinit
 # This will set the default prompt to the walters theme
-prompt walters
+# prompt walters
+eval "$(starship init zsh)"
 #}}}
 
 #: Configs {{{
@@ -160,6 +165,9 @@ setopt INC_APPEND_HISTORY
 setopt appendhistory
 
 setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
+
+# Hyprshot
+export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
 #}}}
 
 #: Fixes {{{
@@ -169,5 +177,6 @@ export MOZ_ENABLE_WAYLAND=1
 #}}}
 
 # Startup
-#clear && fastfetch
+# fastfetch
+pfetch
 
