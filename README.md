@@ -100,4 +100,5 @@ UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=00
 ## Other Apps
 * `Okular` - PDF Reader
 * `haruna` - Video Player (VLC sucks in Linux)
+* `imv` - Image Viewer
 
