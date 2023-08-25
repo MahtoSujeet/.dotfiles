@@ -36,9 +36,7 @@ Xwayland is requied to run some xorg specific dependencies without it you might 
 
 ## Installing AUR Helper (Paru)
 ```bash
-git clone https://aur.archlinux.org/paru-bin
-cd paru-bin
-makepkg -si
+git clone https://aur.archlinux.org/paru-bin && cd paru-bin && makepkg -si
 ```
 
 After Installing paru, check for any updates using Paru.
@@ -94,6 +92,21 @@ It takes the backup of current config files in `.dotfiles-backup` folder and ins
 In case insalling these alone doesn't work, remove `~/.thumbnails`,
 then `ln -s $HOME/.cache/thumbnails $HOME/.thumbnails`
 
+## Chaotic AUR
+First, install the primary key - it can then be used to install our keyring and mirrorlist.
+
+```bash
+pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key 3056513887B78AEB
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+```
+
+Append (adding to the end of the file) to `/etc/pacman.conf`:
+
+```
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+```
 
 ## To mount NTFS
 1. Get UUID of disk with `lsblk -f`
