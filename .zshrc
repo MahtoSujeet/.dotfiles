@@ -116,6 +116,7 @@ alias spss="sudo pacman -Ss"
 alias spsi="sudo pacman -Si"
 alias sprns="sudo pacman -Rns"
 alias pqs="pacman -Qs"
+alias pqi="pacman -Qi"
 alias outdated="paru -Sy && paru -Qu"
 
 # ytdl
@@ -131,6 +132,20 @@ alias gco="git checkout"
 # dotfiles config
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias df=dotfiles
+
+# Dotfiles info, use `dot` function
+dot(){
+  if [[ "$#" -eq 0 ]]; then
+    (cd /
+    for i in $(dotfiles ls-files); do
+      echo -n "$(dotfiles -c color.status=always status $i -s | sed "s#$i##")"
+      echo -e "¬/$i¬\e[0;33m$(dotfiles -c color.ui=always log -1 --format="%s" -- $i)\e[0m"
+    done
+    ) | column -t --separator=¬ -T2
+  else
+    dotfiles $*
+  fi
+}
 
 # other
 # alias neofetch="clear && neofetch"
