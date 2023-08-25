@@ -1,13 +1,18 @@
-# My Linux Dotfiles
-It includes Hyprland, neovim and zsh.
+# Dotfiles
+
+There is no place like ~/
+
+This config includes Hyprland, neovim and zsh.
 
 ### Prerequisites
+
 1. `git` must be installed
 1. Your brain must be present in skull.
 
 --------------------------------
 
 # HYPRLAND SETUP
+
 To get started you'll need few utilities and some basic things, We'll go in steps as;
 
 1. Adding Wayland & Xwayland
@@ -29,7 +34,7 @@ These dependencies will setup the base required for proper functioning of hyprla
 
 Xwayland is requied to run some xorg specific dependencies without it you might feel lags or stutters while doing some task or some task might break
 
-### Installing AUR Helper (Paru)
+## Installing AUR Helper (Paru)
 ```bash
 git clone https://aur.archlinux.org/paru-bin
 cd paru-bin
