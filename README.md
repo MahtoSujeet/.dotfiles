@@ -120,10 +120,9 @@ UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=00
 1. `sudo systemctl enable --now warp-svc.service`
 1. `sudo systemctl stop systemd-resolved`
 1. `sudo systemctl disable systemd-resolved`
-1. `warp-cli register
+1. `warp-cli register`
 1. `warp-cli set-license <enter your key>`
-1. To set different modes
-  * `warp-cli set-mode <your-mode>`
+1. To set different modes `warp-cli set-mode <your-mode>`
 1. `warp-cli connect`
 
 ## Other Apps
