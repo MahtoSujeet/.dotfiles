@@ -93,7 +93,7 @@ In case insalling these alone doesn't work, remove `~/.thumbnails`,
 then `ln -s $HOME/.cache/thumbnails $HOME/.thumbnails`
 
 ## Chaotic AUR
-First, install the primary key - it can then be used to install our keyring and mirrorlist.
+First, install the primary key - it can then be used to install Chaotic AUR's keyring and mirrorlist.
 
 ```bash
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
