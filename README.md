@@ -126,7 +126,7 @@ UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=00
 1. `warp-cli connect`
 
 ## Other Apps
-* `Okular` - PDF Reader
+* `evince` - PDF Reader
 * `haruna` - Video Player (VLC sucks in Linux)
 * `imv` - Image Viewer
 
