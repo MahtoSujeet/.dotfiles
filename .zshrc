@@ -106,6 +106,8 @@ bindkey "\t" autosuggest-accept
 #: Aliases {{{
 # Look and feel
 alias ls="ls --color"
+alias la="ls -a"
+alias l="ls -la"
 alias grep="grep --color"
 alias ..="cd .."
 alias ...="cd ../.."
@@ -121,7 +123,7 @@ alias outdated="paru -Sy && paru -Qu"
 
 # ytdl
 alias ytv-best="yt-dlp --merge-output-format mp4 -f \"bestvideo+bestaudio[ext=m4a]/best\""
-alias yta="yt-dlp -x --audio-format mp3"
+alias yta="yt-dlp -x --audio-format mp3 --embed-thumbnail"
 
 # git
 alias gd="git diff"
@@ -146,6 +148,11 @@ dot(){
     dotfiles $*
   fi
 }
+
+# Warp+
+alias wlc="warp-cli -l connect"
+alias wld="warp-cli -l disconnect"
+alias wls="warp-cli -l status"
 
 # other
 # alias neofetch="clear && neofetch"
