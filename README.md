@@ -1,6 +1,6 @@
 # Dotfiles
 
-There is no place like ~/
+There is no place like `$HOME`
 
 This config includes Hyprland, neovim and zsh.
 
@@ -59,7 +59,8 @@ paru -S light pavucontrol alsa-utils mako mpv brave-bin nm-applet
 
 Following are the general packages that you need.
 ```
-kitty neovim zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions starship ntfs-3g intel-ucode npm
+kitty neovim zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions \
+starship ntfs-3g intel-ucode npm
 ```
 
 Run the following piece of code in `$HOME` directory.
