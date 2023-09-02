@@ -41,11 +41,10 @@ git clone https://aur.archlinux.org/paru-bin && cd paru-bin && makepkg -si
 
 After Installing paru, check for any updates using Paru.
 
-## Installing hyprland and Stuff to make Hyprland functional
+## Installing hyprland and other related packages to make Hyprland functional
 ```bash
 paru -S hyprland-bin hyprpaper waybar-hyprland-git xdg-desktop-portal-hyprland \
-wlroots xdg-desktop-portal polkit-kde-agent wofi kitty neovim zsh zsh-completions \
-zsh-syntax-highlighting zsh-autosuggestions starship ntfs-3g intel-ucode npm thunar
+wlroots xdg-desktop-portal polkit-kde-agent wofi thunar
 ```
 
 ## Setting up Volume, Brightness & other useful stuff
@@ -55,7 +54,13 @@ paru -S light pavucontrol alsa-utils mako mpv brave-bin nm-applet
 
 -------------------------------------------------
 
+
 # Config installation
+
+Following are the general packages that you need.
+```
+kitty neovim zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions starship ntfs-3g intel-ucode npm
+```
 
 Run the following piece of code in `$HOME` directory.
 ```bash
