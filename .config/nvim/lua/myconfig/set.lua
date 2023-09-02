@@ -3,7 +3,7 @@ vim.opt.nu = true
 -- vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
--- vim.opt.cursorline = true
+vim.opt.cursorline = true
 
 local tablength = 2
 vim.opt.tabstop = tablength
