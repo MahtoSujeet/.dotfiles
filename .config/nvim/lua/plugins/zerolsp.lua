@@ -27,7 +27,12 @@ return {
       lsp.buffer_autoformat()
     end)
 
+    -- Custom config for lsp servers
     require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+    require("lspconfig").bashls.setup({
+      filetypes = { "sh", "zsh" },
+    })
 
     lsp.setup()
 
