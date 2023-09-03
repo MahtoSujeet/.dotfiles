@@ -45,17 +45,6 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 zstyle ':completion:*' menu select # menu for autocompletes
 # completions in sudo
 zstyle ':completion::complete:*' gain-privileges 1
-
-
-# By doing this, only the past commands matching the current line up
-# to the current cursor position will be shown when Up or Down keys are pressed.
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
-
 #}}}
 
 #: Keybindings {{{
@@ -89,6 +78,16 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+
+# By doing this, only the past commands matching the current line up
+# to the current cursor position will be shown when Up or Down keys are pressed.
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
@@ -122,7 +121,7 @@ alias pqi="pacman -Qi"
 alias outdated="paru -Sy && paru -Qu"
 
 # ytdl
-alias ytv-best="yt-dlp --merge-output-format mp4 -f \"bestvideo+bestaudio[ext=m4a]/best\""
+alias ytv-best='yt-dlp --merge-output-format mp4 -f "bestvideo+bestaudio[ext=m4a]/best"'
 alias yta="yt-dlp -x --audio-format mp3 --embed-thumbnail"
 
 # git
