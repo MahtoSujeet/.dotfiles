@@ -11,7 +11,7 @@
   "margin-left": 0,
   "margin-right": 0,
 
-  "modules-left": ["custom/menu","wlr/workspaces"],
+  "modules-left": ["custom/menu","hyprland/workspaces"],
   "modules-right": ["memory","cpu","bluetooth","pulseaudio","battery","clock","network","tray"],
   
 }

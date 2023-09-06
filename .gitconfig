@@ -3,3 +3,5 @@
 [user]
 	email = sujeetmehta6@gmail.com
 	name = MahtoSujeet
+[credential]
+	helper = store
