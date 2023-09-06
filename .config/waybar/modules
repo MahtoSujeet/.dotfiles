@@ -66,9 +66,8 @@
       "interval": 1,
       "format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% ",
       "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+      "on-click": "kitty btop",
     },
-
-
 
     "disk": {
       "interval": 30,
@@ -91,7 +90,6 @@
       "tooltip-format": " {ifname} via {gwaddr}",
       "on-click-right": "nm-applet",
     },
-
 
     "custom/updater":{
       "format": "   {}",
@@ -143,5 +141,13 @@
     "tray": {
       "icon-size": 18,
       "spacing": 6
-    }
+    },
+
+     "temperature": {
+	// "thermal-zone": 2,
+	// "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+	// "critical-threshold": 80,
+	// "format-critical": "{temperatureC}°C ",
+	"format": "{temperatureC}°C ",
+},
 }

@@ -121,7 +121,7 @@ alias pqi="pacman -Qi"
 alias outdated="paru -Sy && paru -Qu"
 
 # ytdl
-alias ytv-best='yt-dlp --merge-output-format mp4 -f "bestvideo+bestaudio[ext=m4a]/best"'
+alias ytv='yt-dlp --merge-output-format mp4 -f "bestvideo+bestaudio[ext=m4a]/best"'
 alias yta="yt-dlp -x --audio-format mp3 --embed-thumbnail"
 
 # git

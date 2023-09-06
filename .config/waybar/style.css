@@ -27,6 +27,7 @@ window#waybar.hidden {
 #disk,
 #memory,
 #tray,
+#temperature,
 #pulseaudio,
 #custom-menu,
 #custom-power,
@@ -55,6 +56,10 @@ window#waybar.hidden {
 }
 
 #battery {
+	background-color: #f9e2af;
+}
+
+#temperature {
 	background-color: #f9e2af;
 }
 
