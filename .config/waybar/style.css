@@ -60,8 +60,19 @@ window#waybar.hidden {
 }
 
 #temperature {
-	background-color: #f9e2af;
+	background-color: #a6e3a1;
 }
+
+#temperature.critical {
+	background-color: #f38ba8;
+  color: #f38ba8;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
 
 @keyframes blink {
     to {
