@@ -8,9 +8,7 @@
 
 window#waybar {
   /* Transparent waybar. Make sure to comment out background-color: and border: */
-  background: rgba(0,0,0,0.5);
-  /* background-color: #1e1e2e; */
-  /* border: 2px solid #313244; */
+  background: rgba(55,55,55,0.6);
   transition-property: background-color;
   transition-duration: .5s;
 }
@@ -107,6 +105,7 @@ window#waybar.hidden {
 }
 
 #tray {
+  margin-right: 6px;
 	background-color: #b4befe;
 }
 #tray > .passive {
@@ -132,6 +131,7 @@ window#waybar.hidden {
 }
 
 #custom-menu {
+  margin-left: 6px;
 	background-color: #f5c2e7;
 }
 
