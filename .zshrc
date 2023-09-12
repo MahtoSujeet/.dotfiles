@@ -149,13 +149,14 @@ dot(){
 }
 
 # Warp+
-alias wlc="warp-cli -l connect"
-alias wld="warp-cli -l disconnect"
-alias wls="warp-cli -l status"
+alias wcc="warp-cli connect"
+alias wcd="warp-cli disconnect"
+alias wcs="warp-cli -l status"
 
 # other
 # alias neofetch="clear && neofetch"
 alias vi=nvim
+alias se=sudoedit
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias neofetch=fastfetch
