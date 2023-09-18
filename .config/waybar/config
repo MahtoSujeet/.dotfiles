@@ -1,10 +1,9 @@
 {
   "include": "~/.config/waybar/modules",
   "layer": "top",
-  "mode": "dock",
   "exclusive": true,
   "passthrough": false,
-  "position": "bottom",
+  "position": "top",
   "spacing": 5,
   "fixed-center": false,
   "ipc": true,
@@ -14,6 +13,6 @@
   "margin-top": 0,
 
   "modules-left": ["custom/menu","hyprland/workspaces"],
-  "modules-right": ["memory","temperature","cpu","bluetooth","pulseaudio","battery","clock","network","tray"],
+  "modules-right": ["memory","temperature","cpu","bluetooth","wireplumber","battery","clock","network","tray"],
   
 }

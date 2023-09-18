@@ -44,7 +44,7 @@ After Installing paru, check for any updates using Paru.
 ## Installing hyprland and other related packages to make Hyprland functional
 ```bash
 paru -S hyprland-bin hyprpaper waybar-hyprland-git xdg-desktop-portal-hyprland \
-wlroots xdg-desktop-portal polkit-kde-agent wofi thunar
+wlroots xdg-desktop-portal polkit-kde-agent wofi thunar thunar-volman gvfs-mtp gvfs mtpfs
 ```
 
 ## Setting up Volume, Brightness & other useful stuff
