@@ -26,6 +26,7 @@ window#waybar.hidden {
 #memory,
 #tray,
 #temperature,
+#wireplumber,
 #pulseaudio,
 #custom-menu,
 #custom-power,
@@ -44,8 +45,8 @@ window#waybar.hidden {
 
 #workspaces {
 	border-radius: 50%;
-	margin: 4px 0px;
-	padding: 0px 4px;
+	/* margin: 4px 0px; */
+	/* padding: 0px 4px; */
  	color: #3A3B3C;
 }
 
@@ -116,9 +117,9 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-  background-color: #d9e0ee;
-  color: #3A3B3C;
-  /* border: 2px solid #3a3b3c; */
+  /* background-color: #d9e0ee; */
+  /* color: #3A3B3C; */
+  border: 2px solid #3a3b3c;
   margin-right: 4px;
   padding-left: 6px;
   padding-right: 6px;
@@ -177,13 +178,17 @@ window#waybar.hidden {
 #bluetooth {
 	background-color: #a6e3a1;
 }
+
+#wireplumber,
 #pulseaudio {
 	background-color: #fab387;
 }
 
+#wireplumber.bluetooth,
 #pulseaudio.bluetooth {
 	background-color: #f5c2e7;
 }
+#wireplumber.muted,
 #pulseaudio.muted {
 	background-color: #313244;
 	color: #cdd6f4;
