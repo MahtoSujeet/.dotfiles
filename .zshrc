@@ -106,6 +106,7 @@ bindkey "\t" autosuggest-accept
 # Look and feel
 alias ls="ls --color"
 alias la="ls -a"
+alias ll="ls -l"
 alias l="ls -la"
 alias grep="grep --color"
 alias ..="cd .."
@@ -119,9 +120,9 @@ alias sprns="sudo pacman -Rns"
 alias pqs="pacman -Qs"
 alias pqi="pacman -Qi"
 alias outdated="paru -Sy && paru -Qu"
+alias resedue="paru -Qdt"
 
 # ytdl
-# alias ytv='yt-dlp --merge-output-format mp4 -f "bestvideo+bestaudio[ext=m4a]/best"'
 alias ytv='yt-dlp --merge-output-format mp4 -f "bestvideo+bestaudio/best"'
 alias yta="yt-dlp -x --audio-format mp3 --audio-quality 0 --embed-thumbnail"
 
@@ -150,9 +151,9 @@ dot(){
 }
 
 # Warp+
-alias wcc="warp-cli connect"
-alias wcd="warp-cli disconnect"
-alias wcs="warp-cli -l status"
+alias wlc="warp-cli connect"
+alias wld="warp-cli disconnect"
+alias wls="warp-cli -l status"
 
 # other
 # alias neofetch="clear && neofetch"
