@@ -1,0 +1,266 @@
+//  __  __           _       _            
+// |  \/  | ___   __| |_   _| | ___  ___  
+// | |\/| |/ _ \ / _` | | | | |/ _ \/ __| 
+// | |  | | (_) | (_| | |_| | |  __/\__ \ 
+// |_|  |_|\___/ \__,_|\__,_|_|\___||___/ 
+//                                        
+//  
+// by Sujeet Mahto (2023) 
+// ----------------------------------------------------- 
+//
+{
+  // Workspaces
+  "hyprland/workspaces" : {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent_workspaces": {
+      "*": 5
+    }       
+  },
+
+  // Taskbar
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
+  },
+
+  // Hyprland Window
+  "hyprland/window": {
+    "rewrite": {
+      "(.*) - Brave": "$1",
+      "(.*) - Chromium": "$1",
+      "(.*) - Brave Search": "$1",
+      "(.*) - Outlook": "$1",
+      "(.*) Microsoft Teams": "$1"
+    },
+    "separate-outputs": true
+  },
+
+  // Filemanager Launcher
+  "custom/filemanager": {
+    "format": " ",
+    "on-click": "thunar",
+    "tooltip": false
+  },
+
+  // Brave Launcher
+  "custom/brave": {
+    "format": " ",
+    "on-click": "brave",
+    "tooltip": false
+  },
+
+  // ChatGPT Launcher
+  "custom/chatgpt": {
+    "format": "",
+    "on-click": "brave --app=https://chat.openai.com",
+    "tooltip": false
+  },
+
+  // Rofi Calculator
+  "custom/calculator": {
+    "format": "",
+    "on-click": "~/dotfiles/scripts/calculator.sh",
+    "tooltip": false
+  },
+
+  // Windows VM
+  "custom/windowsvm": {
+    "format": "",
+    "on-click": "~/private/launchvm.sh",
+    "tooltip": false
+  },
+
+  // Rofi Application Launcher
+  "custom/appmenu": {
+    "format": "Apps",
+    // "on-click": "~/dotfiles/scripts/applauncher.sh",
+    "on-click": "wofi",
+    "tooltip": false
+  },
+
+  // Power Menu
+  "custom/exit": {
+    "format": "  ",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+
+  // Keyboard State
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+
+  // System tray
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  },
+
+  // Clock
+  "clock": {
+    // "timezone": "America/New_York",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}",
+    "format-alt": " {:%a %b %d, %G}",
+  },
+
+  // CPU
+  "cpu": {
+    // "interval": 5,
+    "format": "   {usage}%",
+    "interval": 2,
+    //"format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}%  ",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "on-click": "kitty btop",
+  },
+
+  // Memory
+  "memory": {
+    "interval": 10,
+    "format": "   {used:0.1f}G",
+  },
+
+  // Harddisc space used
+  "disk": {
+    "interval": 30,
+    "format": "   {percentage_used}% ",
+    "path": "/"
+  }, 
+
+  // Network
+  "network": {
+    "interval": 2,
+    "format-wifi": "󰤨   {essid}",
+    "format-ethernet": " {ipaddr}/{cidr}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "󰤯  Disconnected",
+    "format-disabled": "󰤭  Disabled",
+    "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "on-click-right": "nm-applet",
+    "max-length": 50
+  },
+  //    "network": {
+  //        "format": "{ifname}",
+  //        "format-wifi": "   {signalStrength}%",
+  //        "format-ethernet": "  {ipaddr}",
+  //        "format-disconnected": "", //An empty format will hide the module.
+  //      "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
+  //        "tooltip-format": " {ifname} via {gwaddri}",
+  //        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+  //        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+  //        "tooltip-format-disconnected": "Disconnected",
+  //        "max-length": 50
+  //    },
+  //
+  // Battery
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}   {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [" ", " ", " ", " ", " "]
+  },
+
+  // wireplumber
+  "wireplumber": {
+    "format": "{icon}  {volume}",
+    "format-muted": "󰖁 Mute",
+    "format-bluetooth": " {volume}% {format_source}",
+    "format-bluetooth-muted": " Mute",
+    "format-source": " {volume}",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕾", "󰕾", "󰕾"]
+    },
+    /* "on-click": "helvum" */
+    "on-click": "pamixer -t",
+    "on-click-right": "pavucontrol",
+  },
+
+  // Pulseaudio
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", " ", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  // Bluetooth
+  "bluetooth": {
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "blueman-manager"
+  },
+
+  // Temperature
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+    "critical-threshold": 65,
+    "interval": 2,
+    "format-critical": "  {temperatureC}°C",
+    "format": "  {temperatureC}°C",
+  },
+
+  // Other
+  "user": {
+    "format": "{user}",
+    "interval": 60,
+    "icon": false,
+  }
+}
+
