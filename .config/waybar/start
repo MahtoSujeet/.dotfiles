@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall waybar
+hyprctl dispatch exec 'waybar -c ~/.config/waybar.test/config -s ~/.config/waybar.test/style.css'

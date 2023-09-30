@@ -1,0 +1,6 @@
+#!/bin/python
+
+def hey():
+  print('helo')
+
+hey()
