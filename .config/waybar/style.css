@@ -48,7 +48,7 @@ window#waybar {
 
 #workspaces {
   background: @background;
-  margin: 5px 5px 5px 5px;
+  margin: 3px 5px;
   padding: 4px 1px;
   border-radius: 12px;
   font-weight: normal;
@@ -60,11 +60,12 @@ window#waybar {
   padding: 0px 10px;
   margin: 0px 3px;
   border-radius: 12px;
-  color: @color11;
+  /* color: @color11; */
+  color: #fff;
   background-color: @color11;
   transition: all 0.3s ease-in-out;
   opacity:0.4;
-  font-size:13px;
+  font-size:1px;
 }
 
 #workspaces button.active {
@@ -72,7 +73,7 @@ window#waybar {
   background-color: @color11;
   border-radius: 10px;
   min-width: 30px;
-  background-size: 400% 400%;
+  /* background-size: 400% 400%; */
   transition: all 0.3s ease-in-out;
   opacity:1.0;
 }
@@ -163,7 +164,7 @@ window#waybar.empty #window {
 * ----------------------------------------------------- */
 
 #custom-brave, #custom-outlook, #custom-filemanager, #custom-teams, #custom-chatgpt, #custom-calculator, #custom-windowsvm {
-  margin-right:20px;
+  padding: 0 10px;
   font-size:20px;
   font-weight:bold;
   opacity:0.8;
