@@ -191,7 +191,7 @@ setopt appendhistory
 setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
 
 # Hyprshot
-export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
+export HYPRSHOT_DIR=~/Pictures/Screenshots
 #}}}
 
 #: Fixes {{{

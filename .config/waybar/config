@@ -47,7 +47,7 @@
     "modules-right": [
         // "wireplumber",
         // "pulseaudio",
-        "bluetooth",
+        // "bluetooth",
         "battery", 
         "group/hardware",
         "network",
