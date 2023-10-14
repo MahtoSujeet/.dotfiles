@@ -131,6 +131,18 @@ UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=00
 1. To set different modes `warp-cli set-mode <your-mode>`
 1. `warp-cli connect`
 
+## Keyring related issue
+Here is the required commands to reset the keys.
+```bash
+mv /etc/pacman.d/gnupg /root/pacman-key.bak
+pacman-key --init
+pacman-key --populate archlinux
+
+pacman -Syy archlinux-keyring
+```
+
+Make sure to update the system after this.
+
 ## Other Apps
 * `evince` - PDF Reader
 * `mpv` - Video Player (VLC sucks in Linux)
