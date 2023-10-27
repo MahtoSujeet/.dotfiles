@@ -58,6 +58,7 @@
       "(.*) - Brave": "$1",
       "(.*) - Chromium": "$1",
       "(.*) - Brave Search": "$1",
+      "Unknown - (.*)": "$1",
       "(.*) - Outlook": "$1",
       "(.*) Microsoft Teams": "$1"
     },
@@ -74,7 +75,8 @@
   // Brave Launcher
   "custom/brave": {
     "format": " ",
-    "on-click": "brave",
+    // "on-click": "brave",
+    "on-click": "thorium-browser",
     "tooltip": false
   },
 

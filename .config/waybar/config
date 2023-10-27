@@ -11,8 +11,8 @@
 {
     // Position TOP
     // "position": "top",
-    // "margin-top": 5,
-    // "margin-bottom": 0,
+    // "margin-top": 2,
+    // "margin-bottom": -3,
 
     // Position BOTTOM
      "position": "bottom",
