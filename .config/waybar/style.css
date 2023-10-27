@@ -243,6 +243,7 @@ window#waybar.empty #window {
 
 #temperature,#disk,#memory,#cpu {
   background-color: @background;
+  color: #fff;
   opacity:0.8;
   padding: 0px 10px;
   margin: 5px 0px;
@@ -251,6 +252,7 @@ window#waybar.empty #window {
 }
 
 #temperature {
+  color: #fff;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   /* border-right: 1px solid #ddd; */
@@ -268,13 +270,11 @@ window#waybar.empty #window {
 }
 
 #memory {
+  color: #fff;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   /* border-left: 1px solid #ddd; */
   border-left: none;
-}
-
-#memory {
   margin-right:10px;
 }
 
