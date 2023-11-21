@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
   color = color or "tokyonight"
-  local transparent = true
+  local transparent = false
 
   vim.cmd.colorscheme(color)
 
