@@ -9,70 +9,63 @@
 // ----------------------------------------------------- 
 //
 {
-    // Position TOP
-    // "position": "top",
-    // "margin-top": 2,
-    // "margin-bottom": -3,
-
-    // Position BOTTOM
-     "position": "bottom",
-     "margin-bottom": 0,
-     "margin-top": 0,
-
-     // General Settings
-    "layer": "top",
-    "height": 1,
-    "margin-left": 0,
-    "margin-right": 0,    
-    "spacing": 0,
-
-    // Load Modules
-    "include": ["~/.config/waybar/modules.json"],
-
-    // Modules Left
-    "modules-left": [
-        "tray",
-        "custom/appmenu",
-        "wlr/taskbar",
-       "group/quicklinks",
-        "hyprland/window"
-    ],
-
-    // Modules Center
-    "modules-center": [
-        "hyprland/workspaces"
-    ],
-
-    // Modules Right    
-    "modules-right": [
-        // "wireplumber",
-        // "pulseaudio",
-        // "bluetooth",
-        "battery", 
-        "group/hardware",
-        "network",
-        "clock",
-        "custom/exit",
-    ],
-
-    // Group Quicklinks
-    "group/quicklinks": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/brave",
-            "custom/filemanager",
-         ]
-    },
-
-    // Group Hardware
-    "group/hardware": {
-        "orientation": "horizontal",
-        "modules": [
-           // "disk",
-            "temperature",
-            "cpu",
-            "memory"
-        ]
-    }
+  // Position TOP
+  // "position": "top",
+  // "margin-top": 0,
+  // "margin-bottom": -3,
+  // Position BOTTOM
+  "position": "bottom",
+  "margin-bottom": 0,
+  "margin-top": 0,
+  // General Settings
+  "layer": "top",
+  "height": 1,
+  "margin-left": 0,
+  "margin-right": 0,
+  "spacing": 0,
+  // Load Modules
+  "include": [
+    "~/.config/waybar/modules.json"
+  ],
+  // Modules Left
+  "modules-left": [
+    "tray",
+    "custom/appmenu",
+    "wlr/taskbar",
+    "group/quicklinks",
+    "hyprland/window"
+  ],
+  // Modules Center
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  // Modules Right    
+  "modules-right": [
+    // "wireplumber",
+    // "pulseaudio",
+    // "bluetooth",
+    "battery",
+    "group/hardware",
+    "network",
+    "clock",
+    "custom/exit",
+  ],
+  // Group Quicklinks
+  "group/quicklinks": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/brave",
+      "custom/filemanager",
+    ]
+  },
+  // Group Hardware
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      // "disk",
+      "temperature",
+      "cpu",
+      "memory"
+    ]
+  }
 }
-
