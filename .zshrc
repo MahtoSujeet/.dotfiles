@@ -121,6 +121,9 @@ alias pqs="pacman -Qs"
 alias pqi="pacman -Qi"
 alias outdated="paru -Sy && paru -Qu"
 alias resedue="paru -Qdt"
+alias echaotic='sudo sed -i "s/#\[chaotic-aur\]/\[chaotic-aur\]/g" /etc/pacman.conf && sudo sed -i "s/\#Include = \/etc\/pacman.d\/chaotic-mirrorlist/Include = \/etc\/pacman.d\/chaotic-mirrorlist/g" /etc/pacman.conf'
+alias dchaotic='sudo sed -i "s/\[chaotic-aur\]/#\[chaotic-aur\]/g" /etc/pacman.conf && sudo sed -i "s/\Include = \/etc\/pacman.d\/chaotic-mirrorlist/#Include = \/etc\/pacman.d\/chaotic-mirrorlist/g" /etc/pacman.conf'
+
 
 # ytdl
 alias ytv='yt-dlp --merge-output-format mp4 -f "bestvideo+bestaudio/best"'
@@ -173,7 +176,6 @@ alias history="fc -li 1"
 # promptinit
 # This will set the default prompt to the walters theme
 # prompt walters
-eval "$(starship init zsh)"
 #}}}
 
 #: Configs {{{
@@ -199,9 +201,13 @@ export HYPRSHOT_DIR=~/Pictures/Screenshots
 # for firefox wayland support & touch screen
 export MOZ_USE_XINPUT2=1
 export MOZ_ENABLE_WAYLAND=1
+
+# vlc wayland
+export QT_QPA_PLATFORM=wayland
 #}}}
 
 # Startup
 fastfetch
+eval "$(starship init zsh)"
 # pfetch
 
