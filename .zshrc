@@ -113,6 +113,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 # pacman
+alias p=paru
 alias sps="sudo pacman -S --needed"
 alias spss="sudo pacman -Ss"
 alias spsi="sudo pacman -Si"
@@ -121,6 +122,7 @@ alias pqs="pacman -Qs"
 alias pqi="pacman -Qi"
 alias outdated="paru -Sy && paru -Qu"
 alias resedue="paru -Qdt"
+alias clean="sudo pacman -Rns \$(paru -Qdtq)"
 alias echaotic='sudo sed -i "s/#\[chaotic-aur\]/\[chaotic-aur\]/g" /etc/pacman.conf && sudo sed -i "s/\#Include = \/etc\/pacman.d\/chaotic-mirrorlist/Include = \/etc\/pacman.d\/chaotic-mirrorlist/g" /etc/pacman.conf'
 alias dchaotic='sudo sed -i "s/\[chaotic-aur\]/#\[chaotic-aur\]/g" /etc/pacman.conf && sudo sed -i "s/\Include = \/etc\/pacman.d\/chaotic-mirrorlist/#Include = \/etc\/pacman.d\/chaotic-mirrorlist/g" /etc/pacman.conf'
 
@@ -131,6 +133,8 @@ alias yta="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --n
 alias ytap="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --ignore-errors --continue --no-overwrites"
 
 # git
+alias ga="git add"
+alias gp="git push"
 alias gd="git diff"
 alias gs="git status"
 alias gcm="git commit -m"
@@ -179,6 +183,7 @@ alias history="fc -li 1"
 #}}}
 
 #: Configs {{{
+export PATH="$HOME/.pyenv/shims:$PATH"
 export EDITOR='nvim'
 
 # zsh history
@@ -211,3 +216,4 @@ fastfetch
 eval "$(starship init zsh)"
 # pfetch
 
+source /usr/share/nvm/init-nvm.sh
