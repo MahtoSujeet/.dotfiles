@@ -49,10 +49,22 @@ return {
       completion = {
         completeopt = 'menu,menuone,noinsert'
       },
+
+      sources = {
+        -- Copilot Source
+        { name = "copilot",  group_index = 2 },
+        -- Other Sources
+        { name = "nvim_lsp", group_index = 2 },
+        { name = "path",     group_index = 2 },
+        { name = "luasnip",  group_index = 2 },
+      },
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
-      }
+      },
+      experimental = {
+        ghost_text = true,
+      },
     })
   end
 }
