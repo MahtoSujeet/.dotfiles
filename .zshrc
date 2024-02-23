@@ -158,10 +158,9 @@ dot(){
   fi
 }
 
-# Warp+
-alias wlc="warp-cli connect"
-alias wld="warp-cli disconnect"
-alias wls="warp-cli -l status"
+#vpn
+alias vc="protonvpn-cli c -f"
+alias vd="protonvpn-cli d"
 
 # other
 # alias neofetch="clear && neofetch"
