@@ -30,3 +30,4 @@ set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<cr>")
 
 -- open terminal in new tab
 set("n", "<leader>t", ":tabnew<cr>:terminal<cr>i")
+set("n", "<F5>", ":!gcc % && ./a.out<cr>")
