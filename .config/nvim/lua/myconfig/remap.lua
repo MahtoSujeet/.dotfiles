@@ -19,6 +19,8 @@ set("n", "<C-Right>", ":vertical resize +2<CR>")
 
 set("i", "jk", "<esc>")
 set("i", "kj", "<esc>")
+set("i", "JK", "<esc>")
+set("i", "KJ", "<esc>")
 
 -- save the buffer
 set("n", "<c-s>", ":w<cr>")
