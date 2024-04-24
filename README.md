@@ -4,6 +4,10 @@ There is no place like `$HOME`
 
 This config includes Hyprland, neovim and zsh.
 
+[![Last commit](https://img.shields.io/github/last-commit/MahtoSujeet/.dotfiles?&logo=github)](https://github.com/MahtoSujeet/.dotfiles)
+[![Size](https://img.shields.io/github/repo-size/MahtoSujeet/.dotfiles?color=green)](https://github.com/MahtoSujeet/.dotfiles)
+
+
 ### Prerequisites
 
 1. `git` must be installed
