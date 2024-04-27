@@ -1,4 +1,6 @@
-vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("tokyonight")
+vim.cmd.colorscheme("rose-pine")
 -- function ColorMyPencils(color)
 --   color = color or "gruvbox"
 --   local transparent = false
