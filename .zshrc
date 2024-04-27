@@ -177,6 +177,7 @@ alias se=sudoedit
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias history="fc -li 1"
+alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 #}}}
 
 #: Look and Feel {{{
