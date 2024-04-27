@@ -164,11 +164,11 @@ alias vd="protonvpn-cli d"
 
 # other
 # alias neofetch="clear && neofetch"
+alias fastfetch="clear && fastfetch"
 alias vi=nvim
 alias se=sudoedit
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
-alias neofetch=fastfetch
 alias history="fc -li 1"
 #}}}
 
@@ -215,4 +215,5 @@ fastfetch
 eval "$(starship init zsh)"
 # pfetch
 
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
+source .config/zoxide/init.zsh
