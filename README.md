@@ -1,6 +1,5 @@
-# Dotfiles
 
-There is no place like `$HOME`
+# There is no place like `$HOME`
 
 This config includes Hyprland, neovim and zsh.
 
