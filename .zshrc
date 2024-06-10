@@ -1,4 +1,5 @@
 # vim:foldmethod=marker
+export mpv="mpv --saturation=5"
 
 #: ex = EXtractor for all kinds of archives {{{
 # # usage: ex <file>
@@ -214,8 +215,6 @@ export HYPRSHOT_DIR=~/Pictures/Screenshots
 export MOZ_USE_XINPUT2=1
 export MOZ_ENABLE_WAYLAND=1
 
-# vlc wayland
-export QT_QPA_PLATFORM=wayland
 #}}}
 
 # Startup
