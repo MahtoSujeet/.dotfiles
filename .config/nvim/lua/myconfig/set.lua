@@ -23,10 +23,10 @@ vim.opt.incsearch = true
 -- close all = zM
 -- toggle one = za
 -- open all = zR
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-
-vim.opt.foldlevel = 999
-vim.opt.foldnestmax = 4
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+--
+-- vim.opt.foldlevel = 999
+-- vim.opt.foldnestmax = 4
 
 vim.g.mapleader = " "
