@@ -1,4 +1,3 @@
-# my-nvim-setup
+# Neovim
 
-Used Lazy as package manager, lsp and other code completion is setted up.
-All common keymaps are set.
+* `ripgrep` - for live_grep (<leader>fg)
