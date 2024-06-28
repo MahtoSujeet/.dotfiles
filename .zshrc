@@ -1,5 +1,4 @@
 # vim:foldmethod=marker
-export mpv="mpv --saturation=5"
 
 #: ex = EXtractor for all kinds of archives {{{
 # # usage: ex <file>
@@ -142,8 +141,8 @@ alias gcm="git commit -m"
 alias gco="git checkout"
 
 # dotfiles config
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias df=dotfiles
+alias df='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles=df
 
 # Dotfiles info, use `dot` function
 dot(){
@@ -223,4 +222,5 @@ eval "$(starship init zsh)"
 # pfetch
 
 # source /usr/share/nvm/init-nvm.sh
-source .config/zoxide/init.zsh
+eval "$(zoxide init zsh)"
+alias cd="z"
