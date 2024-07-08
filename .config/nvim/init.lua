@@ -19,5 +19,11 @@ vim.g.mapleader = " "
 ------------------------------------------------
 
 require("myconfig")
-require("lazy").setup("plugins")
+-- Add any directory that you want to auto import
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+    { import = "plugins.lsp" },
+  }
+})
 require("after.plugins")
