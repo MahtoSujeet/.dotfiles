@@ -1,21 +1,29 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'VonHeikemen/lsp-zero.nvim',branch = 'v3.x'},
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
     {
       "L3MON4D3/LuaSnip",
       version = "v2.*",
     },
-    {'saadparwaiz1/cmp_luasnip'},
+    { 'saadparwaiz1/cmp_luasnip' },
     { "rafamadriz/friendly-snippets" },
+    {
+      'williamboman/mason-lspconfig.nvim',
+      dependencies = {
+        { 'williamboman/mason.nvim', opts = {} },
+        { 'neovim/nvim-lspconfig' },
+      },
+    }
   },
   config = function()
     -- lsp-zero
     local lsp_zero = require('lsp-zero')
-    local cmp = require'cmp'
+    local cmp = require 'cmp'
     local cmp_action = require('lsp-zero').cmp_action()
-    local cmp_format = require('lsp-zero').cmp_format({details = true})
+    local cmp_format = require('lsp-zero').cmp_format({ details = true })
+    local mason_lspconfig = require("mason-lspconfig")
 
 
     -- lsp_zero.format_on_save({
@@ -29,6 +37,7 @@ return {
     -- lsp_attach is where you enable features that only work
     -- if there is a language server active in the file
     local lsp_attach = function(client, bufnr)
+      print("inside lsp_attach")
       local opts = { buffer = bufnr }
       -- not working
       lsp_zero.buffer_autoformat()
@@ -40,22 +49,44 @@ return {
       vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
       vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
       vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-      vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-      vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+      -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+      vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+      vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
       vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     end
 
-    lsp_zero.extend_lspconfig({
-      sign_text = true,
-      lsp_attach = lsp_attach,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(),
 
-      -- custom config for lsp-servers
-      require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls()),
-      require("lspconfig").bashls.setup({
-        filetypes = { "sh", "zsh" },
-    })
-    })
+    -- masonmason
+    -- lazy says use opts={} instead of config=function() req("p").setup{}
+
+      mason_lspconfig.setup({
+        handlers = {
+          -- this first function is the "default handler"
+          -- it applies to every language server without a "custom handler"
+          function(server_name)
+            require('lspconfig')[server_name].setup({
+              on_attach = lsp_attach,
+              capabilities = require('cmp_nvim_lsp').default_capabilities(),
+          })
+          end,
+
+          -- custom handler
+        lua_ls = function()
+          require('lspconfig').lua_ls.setup({
+            lsp_zero.nvim_lua_ls(),
+            on_attach = lsp_attach,
+          })
+        end,
+
+        bashls = function()
+          require('lspconfig').bashls.setup({
+            filetypes = {"sh", "zsh" },
+            on_attach = lsp_attach,
+          })
+        end,
+
+        },
+      })
 
 
 
@@ -73,7 +104,7 @@ return {
       },
 
       mapping = cmp.mapping.preset.insert({
-         ['<Tab>'] = cmp_action.luasnip_supertab(),
+        ['<Tab>'] = cmp_action.luasnip_supertab(),
         ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -99,6 +130,8 @@ return {
       },
     })
 
+
+
     -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
     -- Set configuration for specific filetype.
     --[[ cmp.setup.filetype('gitcommit', {
@@ -108,8 +141,7 @@ return {
         { name = 'buffer' },
       })
     })
-    require("cmp_git").setup() ]]-- 
-
+    require("cmp_git").setup() ]] --
   end,
 
 }
