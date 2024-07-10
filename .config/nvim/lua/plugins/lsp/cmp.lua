@@ -78,10 +78,19 @@ return {
     -- cmp
     require('luasnip.loaders.from_vscode').lazy_load()
 
+
+    -- trnasparent border bg
+    local function get_custom_border()
+      return cmp.config.window.bordered({
+        winhighlight = cmp.config.window.bordered().winhighlight:gsub(':FloatBorder', ':CustomFloatBorder'),
+      })
+    end
+
     cmp.setup {
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        -- completion = cmp.config.window.bordered(),
+        completion = get_custom_border(),
+        documentation = get_custom_border(),
       },
       preselect = 'item',
       completion = {
@@ -110,9 +119,10 @@ return {
       --- (Optional) Show source name in completion menu
       formatting = cmp_format,
       experimental = {
-         ghost_text = true,
+        ghost_text = true,
       },
     }
+    vim.cmd "highlight! BorderBG guibg=NONE guifg=#00ff00"
 
 
 
