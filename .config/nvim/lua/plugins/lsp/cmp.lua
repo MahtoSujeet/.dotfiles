@@ -1,21 +1,14 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
+    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v4.x' },
     { 'hrsh7th/cmp-nvim-lsp' },
-    { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
-    {
-      "L3MON4D3/LuaSnip",
-      version = "v2.*",
-    },
+    { "L3MON4D3/LuaSnip",                 version = "v2.*" },
     { 'saadparwaiz1/cmp_luasnip' },
     { "rafamadriz/friendly-snippets" },
-    {
-      'williamboman/mason-lspconfig.nvim',
-      dependencies = {
-        { 'williamboman/mason.nvim', opts = {} },
-        { 'neovim/nvim-lspconfig' },
-      },
-    }
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'williamboman/mason.nvim',          opts = {} },
+    { 'neovim/nvim-lspconfig' },
   },
   config = function()
     -- lsp-zero
@@ -26,20 +19,11 @@ return {
     local mason_lspconfig = require("mason-lspconfig")
 
 
-    -- lsp_zero.format_on_save({
-    --   format_opts = {
-    --     async = false,
-    --     timeout_ms = 10000,
-    --   },
-    -- })
-
-
     -- lsp_attach is where you enable features that only work
     -- if there is a language server active in the file
     local lsp_attach = function(client, bufnr)
-      print("inside lsp_attach")
       local opts = { buffer = bufnr }
-      -- not working
+
       lsp_zero.buffer_autoformat()
 
       vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
@@ -49,51 +33,52 @@ return {
       vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
       vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
       vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-      -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+      vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
       vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
       vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
       vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     end
 
-
     -- masonmason
     -- lazy says use opts={} instead of config=function() req("p").setup{}
 
-      mason_lspconfig.setup({
-        handlers = {
-          -- this first function is the "default handler"
-          -- it applies to every language server without a "custom handler"
-          function(server_name)
-            require('lspconfig')[server_name].setup({
-              on_attach = lsp_attach,
-              capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          })
-          end,
+    mason_lspconfig.setup {
+      ensure_installed = { "lua_ls" },
 
-          -- custom handler
+      handlers = {
+        -- this first function is the "default handler"
+        -- it applies to every language server without a "custom handler"
+        function(server_name)
+          require('lspconfig')[server_name].setup({
+            on_attach = lsp_attach,
+            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+          })
+        end,
+
+        -- custom handler
         lua_ls = function()
           require('lspconfig').lua_ls.setup({
-            lsp_zero.nvim_lua_ls(),
+            -- lsp_zero.nvim_lua_ls(),
             on_attach = lsp_attach,
           })
         end,
 
         bashls = function()
           require('lspconfig').bashls.setup({
-            filetypes = {"sh", "zsh" },
+            filetypes = { "sh", "zsh" },
             on_attach = lsp_attach,
           })
         end,
 
-        },
-      })
+      },
+    }
 
 
 
     -- cmp
     require('luasnip.loaders.from_vscode').lazy_load()
 
-    cmp.setup({
+    cmp.setup {
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -106,15 +91,14 @@ return {
       mapping = cmp.mapping.preset.insert({
         ['<Tab>'] = cmp_action.luasnip_supertab(),
         ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
+        -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        -- ['<C-Space>'] = cmp.mapping.complete(),
+        -- ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
       snippet = {
         expand = function(args)
-          vim.snippet.expand(args.body)
           require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
         end,
       },
@@ -126,9 +110,9 @@ return {
       --- (Optional) Show source name in completion menu
       formatting = cmp_format,
       experimental = {
-        ghost_text = true,
+         ghost_text = true,
       },
-    })
+    }
 
 
 
