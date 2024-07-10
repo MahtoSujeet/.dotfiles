@@ -30,4 +30,22 @@ set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<cr>")
 
 -- open terminal in new tab
 set("n", "<leader>t", ":tabnew<cr>:terminal<cr>i")
-set("n", "<F5>", ":!g++ % && ./a.out<cr>")
+
+-- Function to run the command based on filetype
+function run_code()
+  local filetype = vim.bo.filetype
+  local commands = {
+    python = '!python %',
+    c = '!g++ % && ./a.out',
+    cpp = '!g++ % && ./a.out'
+  }
+
+  local command = commands[filetype]
+  if command then
+    vim.cmd(command)
+  else
+    print('No run command set for this filetype')
+  end
+end
+
+set('n', '<F5>', ':lua run_code()<CR>', { noremap = true, silent = true })
