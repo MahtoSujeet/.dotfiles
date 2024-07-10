@@ -1,5 +1,5 @@
 vim.opt.termguicolors = true
-vim.opt.nu = true
+vim.opt.number = true
 -- vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 -- vim.opt.smartcase = true
