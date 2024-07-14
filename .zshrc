@@ -128,7 +128,8 @@ alias dchaotic='sudo sed -i "s/\[chaotic-aur\]/#\[chaotic-aur\]/g" /etc/pacman.c
 
 
 # ytdl
-alias ytv='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4 -f "bestvideo+bestaudio/best"'
+alias ytv='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4 -f "bestvideo+bestaudio/best" --no-playlist'
+alias ytvp='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4 -f "bestvideo+bestaudio/best"'
 alias yta="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --no-playlist"
 alias ytap="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --ignore-errors --continue --no-overwrites"
 
@@ -204,9 +205,6 @@ setopt INC_APPEND_HISTORY
 setopt appendhistory
 
 setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
-
-# Hyprshot
-export HYPRSHOT_DIR=~/Pictures/Screenshots
 #}}}
 
 #: Fixes {{{
