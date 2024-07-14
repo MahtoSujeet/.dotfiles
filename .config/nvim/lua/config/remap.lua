@@ -32,7 +32,7 @@ set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<cr>")
 set("n", "<leader>t", ":tabnew<cr>:terminal<cr>i")
 
 -- Function to run the command based on filetype
-function run_code()
+function RunCode()
   local filetype = vim.bo.filetype
   local commands = {
     python = '!python %',
@@ -48,4 +48,4 @@ function run_code()
   end
 end
 
-set('n', '<F5>', ':lua run_code()<CR>', { noremap = true, silent = true })
+set('n', '<F5>', ':lua RunCode()<CR>', { noremap = true, silent = true })
