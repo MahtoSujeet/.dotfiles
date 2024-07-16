@@ -29,20 +29,20 @@ set("n", "<leader>q", ":q!<cr>")
 set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<cr>")
 
 -- open terminal in new tab
-set("n", "<leader>t", ":tabnew<cr>:terminal<cr>i")
+-- set("n", "<leader>t", ":tabnew<cr>:terminal<cr>i")
 
 -- Function to run the command based on filetype
 function RunCode()
   local filetype = vim.bo.filetype
   local commands = {
-    python = '!python %',
-    c = '!g++ % && ./a.out',
-    cpp = '!g++ % && ./a.out'
+    python = 'python %',
+    c = 'g++ % && ./a.out',
+    cpp = 'g++ % && ./a.out'
   }
 
   local command = commands[filetype]
   if command then
-    vim.cmd(command)
+    vim.cmd("TermExec cmd='" .. command .. "'")
   else
     print('No run command set for this filetype')
   end

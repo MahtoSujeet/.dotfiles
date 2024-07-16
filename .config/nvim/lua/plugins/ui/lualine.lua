@@ -1,8 +1,9 @@
 return {
   'nvim-lualine/lualine.nvim',
   event = "VimEnter",
-  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-  config = function()
-    require('lualine').setup()
-  end,
+  dependencies = { 'nvim-tree/nvim-web-devicons', opts = true },
+  opts = {},
+  -- config = function()
+  --   require('lualine').setup()
+  -- end,
 }
