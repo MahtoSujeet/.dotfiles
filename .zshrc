@@ -172,7 +172,7 @@ alias lt='eza --icons=auto --tree' # list folder as tree
 
 # other
 # alias neofetch="clear && neofetch"
-alias fastfetch="clear && fastfetch"
+# alias fastfetch="clear && fastfetch"
 alias vi=nvim
 alias se=sudoedit
 alias tree="tree -I 'node_modules|__pycache__'"
@@ -214,11 +214,13 @@ export MOZ_ENABLE_WAYLAND=1
 
 #}}}
 
-# Startup
-fastfetch
 eval "$(starship init zsh)"
-# pfetch
 
-# source /usr/share/nvm/init-nvm.sh
+# # source /usr/share/nvm/init-nvm.sh
 eval "$(zoxide init zsh)"
 alias cd="z"
+
+# Only run fastfetch if terminal is kitty
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    fastfetch
+fi
