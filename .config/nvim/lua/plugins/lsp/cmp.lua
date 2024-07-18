@@ -1,6 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  event = "InsertEnter",
+  event = "BufEnter",
   dependencies = {
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v4.x' },
     { 'hrsh7th/cmp-nvim-lsp' },
