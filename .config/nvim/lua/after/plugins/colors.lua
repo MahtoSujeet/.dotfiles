@@ -9,7 +9,6 @@ function ColorMyPencils(color)
   vim.cmd.colorscheme(color)
   local bg_color = vim.api.nvim_get_hl_by_name("Normal", true).background
   bg_color = string.format("#%06x", bg_color)
-  print(bg_color)
 
   --
   -- To make bg transparent
