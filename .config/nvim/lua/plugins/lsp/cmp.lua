@@ -8,7 +8,7 @@ return {
     { 'saadparwaiz1/cmp_luasnip' },
     { "rafamadriz/friendly-snippets" },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'williamboman/mason.nvim',          opts = {} },
+    { 'williamboman/mason.nvim',          opts = { ui = { border = "rounded" } } },
     { 'neovim/nvim-lspconfig' },
   },
   config = function()
