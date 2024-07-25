@@ -1,5 +1,16 @@
 # vim:foldmethod=marker
 
+#: Look and Feel {{{
+# to set truecolor
+[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
+
+# promptinit
+eval "$(starship init zsh)"
+
+# This will set the default prompt to the walters theme
+# prompt walters
+#}}}
+
 #: ex = EXtractor for all kinds of archives {{{
 # # usage: ex <file>
 ex ()
@@ -128,10 +139,13 @@ alias dchaotic='sudo sed -i "s/\[chaotic-aur\]/#\[chaotic-aur\]/g" /etc/pacman.c
 
 
 # ytdl
-alias ytv='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4 -f "bestvideo+bestaudio/best" --no-playlist'
-alias ytvp='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4 -f "bestvideo+bestaudio/best"'
+alias ytv='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4\
+  -f "bestvideo+bestaudio/best" --no-playlist'
+alias ytvp='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4\
+  -f "bestvideo+bestaudio/best"'
 alias yta="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --no-playlist"
-alias ytap="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --ignore-errors --continue --no-overwrites"
+alias ytap="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --ignore-errors\
+  --continue --no-overwrites"
 
 # git
 alias g="git"
@@ -171,7 +185,7 @@ alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
-alias lt='eza --icons=auto --tree' # list folder as tree
+alias lt='eza --icons=auto --tree --git-ignore' # list folder as tree
 
 # other
 # alias neofetch="clear && neofetch"
@@ -182,15 +196,10 @@ alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
-#}}}
 
-#: Look and Feel {{{
-# to set truecolor
-[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
-
-# promptinit
-# This will set the default prompt to the walters theme
-# prompt walters
+# zoxide - better cd
+eval "$(zoxide init zsh)"
+alias cd="z"
 #}}}
 
 #: Configs {{{
@@ -217,11 +226,7 @@ export MOZ_ENABLE_WAYLAND=1
 
 #}}}
 
-eval "$(starship init zsh)"
-
-# # source /usr/share/nvm/init-nvm.sh
-eval "$(zoxide init zsh)"
-alias cd="z"
+# source /usr/share/nvm/init-nvm.sh
 
 # Only run fastfetch if terminal is kitty
 if [[ "$TERM" == "xterm-kitty" ]]; then
