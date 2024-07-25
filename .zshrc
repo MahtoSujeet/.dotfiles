@@ -134,12 +134,15 @@ alias yta="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --n
 alias ytap="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --ignore-errors --continue --no-overwrites"
 
 # git
+alias g="git"
 alias ga="git add"
 alias gp="git push"
 alias gd="git diff"
 alias gs="git status"
 alias gcm="git commit -m"
 alias gco="git checkout"
+alias lg="lazygit"
+alias lgdf="lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # dotfiles config
 alias df='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
