@@ -36,8 +36,9 @@ function RunCode()
   local filetype = vim.bo.filetype
   local commands = {
     python = 'python %',
-    c = 'g++ % && ./a.out',
-    cpp = 'g++ % && ./a.out'
+    c = 'gcc % && ./a.out',
+    cpp = 'g++ % && ./a.out',
+    asm = 'gcc % -nostdlib -static && ./a.out',
   }
 
   local command = commands[filetype]
