@@ -29,5 +29,4 @@ function show_window(){
 # fi
 
 hide_window >> /dev/null
-neovide $1 && show_window >> /dev/null
-hyprctl dispatch focuswindow kitty
+neovide $1 && show_window && hyprctl dispatch focuswindow kitty

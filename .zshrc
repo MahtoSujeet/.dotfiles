@@ -191,6 +191,7 @@ alias lt='eza --icons=auto --tree --git-ignore' # list folder as tree
 # alias neofetch="clear && neofetch"
 # alias fastfetch="clear && fastfetch"
 alias vi=nvim
+alias vim=neovide_hide_terminal.sh
 alias se=sudoedit
 alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
@@ -229,6 +230,6 @@ export MOZ_ENABLE_WAYLAND=1
 # source /usr/share/nvm/init-nvm.sh
 
 # Only run fastfetch if terminal is kitty
-if [[ "$TERM" == "xterm-kitty" ]]; then
-    fastfetch
-fi
+# if [[ "$TERM" == "xterm-kitty" ]]; then
+#     fastfetch
+# fi
