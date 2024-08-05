@@ -1,2 +1,2 @@
 require("myconfig.settings")
-require("myconfig.remap")
+require("myconfig.keymap")

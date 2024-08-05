@@ -28,9 +28,6 @@ set("n", "<leader>q", ":q!<cr>")
 -- To open config file
 set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<cr>")
 
--- open terminal in new tab
--- set("n", "<leader>t", ":tabnew<cr>:terminal<cr>i")
-
 -- Function to run the command based on filetype
 function RunCode()
   local filetype = vim.bo.filetype

@@ -13,10 +13,16 @@ vim.opt.expandtab = true
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
-vim.opt.scrolloff = 3
+vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+
+-- Neovide
+if vim.g.neovide then
+  vim.g.neovide_scale_factor = 0.85
+  vim.g.neovide_transparency = 0.95
+end
 
 -- Code folding
 -- By default all the foldings are open
