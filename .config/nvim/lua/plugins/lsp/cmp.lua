@@ -35,7 +35,6 @@ return {
       vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
       vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
       vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-      vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
       vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
       vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     end
@@ -124,19 +123,5 @@ return {
       },
     }
     vim.cmd "highlight! BorderBG guibg=NONE guifg=#00ff00"
-
-
-
-    -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
-    -- Set configuration for specific filetype.
-    --[[ cmp.setup.filetype('gitcommit', {
-      sources = cmp.config.sources({
-        { name = 'git' },
-      }, {
-        { name = 'buffer' },
-      })
-    })
-    require("cmp_git").setup() ]] --
   end,
-
 }

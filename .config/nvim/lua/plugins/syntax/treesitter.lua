@@ -2,6 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   event = "BufEnter",
   dependencies = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
     "windwp/nvim-ts-autotag",
   },
   build = ':TSUpdate',
@@ -25,7 +26,6 @@ return {
       },
 
       incremental_selection = {
-        enable = true,
         keymaps = {
           init_selection = "<leader>ss",
           node_incremental = "<leader>si",
@@ -63,6 +63,29 @@ return {
           -- * selection_mode: eg 'v'
           -- and should return true or false
           include_surrounding_whitespace = true,
+        },
+
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["]]"] = "@function.outer",
+            --
+            ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+            ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+          },
+          goto_previous_start = {
+            ["[["] = "@function.outer",
+            ["[s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+            ["[z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+          },
+
+          goto_next = {
+            ["]c"] = "@conditional.outer",
+          },
+          goto_previous = {
+            ["[c"] = "@conditional.outer",
+          }
         },
       },
     }
