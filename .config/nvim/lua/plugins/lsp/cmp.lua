@@ -16,7 +16,7 @@ return {
     local lsp_zero = require('lsp-zero')
     local cmp = require 'cmp'
     local cmp_action = require('lsp-zero').cmp_action()
-    local cmp_format = require('lsp-zero').cmp_format({ details = true })
+    local cmp_format = require('lsp-zero').cmp_format({ details = false })
     local mason_lspconfig = require("mason-lspconfig")
 
 
@@ -77,7 +77,9 @@ return {
 
     -- cmp
     require('luasnip.loaders.from_vscode').lazy_load()
-
+    require("luasnip.loaders.from_vscode").load_standalone({
+      path = "./cpp.code-snippets"
+    })
 
     -- trnasparent border bg
     local function get_custom_border()
