@@ -36,10 +36,12 @@ function RunCode()
     c = 'gcc % && ./a.out',
     cpp = 'g++ % && ./a.out',
     asm = 'gcc % -nostdlib -static && ./a.out',
+    sh = 'if [ ! -x % ]; then chmod +x %; fi; ./%',
   }
 
   local command = commands[filetype]
   if command then
+    vim.cmd("w")
     vim.cmd("TermExec cmd='" .. command .. "'")
   else
     print('No run command set for this filetype')
