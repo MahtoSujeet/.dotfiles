@@ -146,6 +146,8 @@ alias ytvp='yt-dlp --embed-subs --sub-lang en,hi,es --merge-output-format mp4\
 alias yta="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --no-playlist"
 alias ytap="yt-dlp -x --audio-format best --audio-quality 0 --embed-thumbnail --ignore-errors\
   --continue --no-overwrites"
+alias ytvpr='yt-dlp --proxy "http://edcguest:edcguest@172.31.102.14:3128/" --embed-subs --sub-lang en,hi,es --merge-output-format mp4\
+  -f "bestvideo+bestaudio/best" --no-playlist'
 
 # git
 alias g="git"
