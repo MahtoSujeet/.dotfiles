@@ -78,7 +78,7 @@ return {
     -- cmp
     require('luasnip.loaders.from_vscode').lazy_load()
     require("luasnip.loaders.from_vscode").load_standalone({
-      path = "./cpp.code-snippets"
+      path = "./snippets/cpp.code-snippets"
     })
 
     -- trnasparent border bg
@@ -114,9 +114,10 @@ return {
         end,
       },
       sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
-        { name = 'buffer' },
+        { name = 'copilot',  group_index = 2 },
+        { name = 'nvim_lsp', group_index = 2 },
+        { name = 'luasnip',  group_index = 2 }, -- For luasnip users.
+        { name = 'buffer',   group_index = 2 },
       }),
       --- (Optional) Show source name in completion menu
       formatting = cmp_format,
