@@ -1,9 +1,0 @@
-{
-  "test": {
-    "prefix": "hey",
-    "body": [
-      "$(1:hey)",
-      "im auto typing"
-    ]
-  }
-}
