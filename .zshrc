@@ -228,10 +228,19 @@ export MOZ_USE_XINPUT2=1
 export MOZ_ENABLE_WAYLAND=1
 
 #}}}
+#
+#
+# export http_proxy="http://edcguest:edcguest@172.28.102.14:3128"
+# export https_proxy="https://edcguest:edcguest@172.28.102.14:3128"
+# export HTTP_PROXY="http://edcguest:edcguest@172.28.102.14:3128"
+# export https_proxy="https://edcguest:edcguest@172.28.102.14:3128"
 
-# source /usr/share/nvm/init-nvm.sh
+# Source NVM if available
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+    source /usr/share/nvm/init-nvm.sh
+fi
 
 # Only run fastfetch if terminal is kitty
-# if [[ "$TERM" == "xterm-kitty" ]]; then
-#     fastfetch
-# fi
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    fastfetch
+fi
