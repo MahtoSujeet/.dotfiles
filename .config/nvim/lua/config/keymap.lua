@@ -4,29 +4,24 @@ local set = vim.keymap.set
 -- set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Better window movement
-set("n", "<C-h>", "<C-w>h")
-set("n", "<C-j>", "<C-w>j")
-set("n", "<C-k>", "<C-w>k")
-set("n", "<C-l>", "<C-w>l")
+set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
+set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
+set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 -- Resize with arrows
-set("n", "<C-Up>", ":resize -2<CR>")
-set("n", "<C-Down>", ":resize +2<CR>")
-set("n", "<C-Left>", ":vertical resize -2<CR>")
-set("n", "<C-Right>", ":vertical resize +2<CR>")
+set("n", "<C-Up>", ":resize -2<CR>", { desc = "Resize window up" })
+set("n", "<C-Down>", ":resize +2<CR>", { desc = "Resize window down" })
+set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Resize window left" })
+set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Resize window right" })
 
-set("i", "jk", "<esc>")
-set("i", "kj", "<esc>")
-set("i", "JK", "<esc>")
-set("i", "KJ", "<esc>")
+-- Save the buffer
+set("n", "<C-s>", ":w<CR>", { desc = "Save buffer" })
+set("i", "<C-s>", "<Esc>:w<CR>", { desc = "Save buffer in insert mode" })
+set("n", "<leader>q", ":q!<CR>", { desc = "Quit without saving" })
 
--- save the buffer
-set("n", "<c-s>", ":w<cr>")
-set("i", "<c-s>", "<esc>:w<cr>")
-set("n", "<leader>q", ":q!<cr>")
-
--- To open config file
-set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<cr>")
+-- Open config file
+set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<CR>", { desc = "Open Neovim config" })
 
 -- Function to run the command based on filetype
 function RunCode()
@@ -48,4 +43,6 @@ function RunCode()
   end
 end
 
+-- Key mapping to run code
+set("n", "<leader>r", ":lua RunCode()<CR>", { desc = "Run code based on filetype" })
 set('n', '<F5>', ':lua RunCode()<CR>', { noremap = true, silent = true })
