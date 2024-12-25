@@ -1,9 +1,11 @@
+-- lazy says use opts={} instead of config=function() req("p").setup{}
 return {
   'hrsh7th/nvim-cmp',
   -- event = "BufEnter",
   dependencies = {
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v4.x' },
     { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-path' },  -- Add cmp-path for path completions
     { "L3MON4D3/LuaSnip",                 version = "v2.*" },
     { 'saadparwaiz1/cmp_luasnip' },
     { "rafamadriz/friendly-snippets" },
@@ -19,65 +21,69 @@ return {
     local cmp_format = require('lsp-zero').cmp_format({ details = false })
     local mason_lspconfig = require("mason-lspconfig")
 
-
-    -- lsp_attach is where you enable features that only work
-    -- if there is a language server active in the file
-    local lsp_attach = function(client, bufnr)
+    -- Define LSP keymaps in a separate function
+    local function set_lsp_keymaps(bufnr)
       local opts = { buffer = bufnr }
+      local maps = {
+        ['K'] = { '<cmd>lua vim.lsp.buf.hover()<cr>', 'Show hover documentation' },
+        ['gd'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Go to definition' },
+        ['gD'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Go to declaration' },
+        ['gi'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Go to implementation' },
+        ['go'] = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Go to type definition' },
+        ['gr'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Find references' },
+        ['gs'] = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Show signature help' },
+        ['<F2>'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename symbol' },
+        ['<F3>'] = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format code' },
+        ['<F4>'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code actions' },
+        ['[d'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Previous diagnostic' },
+        [']d'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
+      }
 
-      lsp_zero.buffer_autoformat()
-
-      vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-      vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-      vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-      vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-      vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-      vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-      vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-      vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-      vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
-      vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+      for k, v in pairs(maps) do
+        vim.keymap.set('n', k, v[1], { desc = v[2], buffer = bufnr })
+      end
     end
 
-    -- masonmason
-    -- lazy says use opts={} instead of config=function() req("p").setup{}
+    -- LSP attach function
+    local lsp_attach = function(client, bufnr)
+      lsp_zero.buffer_autoformat()
+      set_lsp_keymaps(bufnr)
+    end
 
-    mason_lspconfig.setup {
-      ensure_installed = { "lua_ls" },
+    -- Default capabilities
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      handlers = {
-        -- this first function is the "default handler"
-        -- it applies to every language server without a "custom handler"
-        function(server_name)
-          require('lspconfig')[server_name].setup({
-            on_attach = lsp_attach,
-            capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          })
-        end,
-
-        -- custom handler
-        lua_ls = function()
-          require('lspconfig').lua_ls.setup({
-            -- lsp_zero.nvim_lua_ls(),
-            on_attach = lsp_attach,
-          })
-        end,
-
-        bashls = function()
-          require('lspconfig').bashls.setup({
-            filetypes = { "sh", "zsh" },
-            on_attach = lsp_attach,
-          })
-        end,
-
+    -- Custom Server configurations
+    local servers = {
+      lua_ls = {
+        lsp_zero.nvim_lua_ls(),
+        on_attach = lsp_attach,
+        capabilities = capabilities,
+      },
+      bashls = {
+        on_attach = lsp_attach,
+        filetypes = { 'sh', 'zsh' },
+        capabilities = capabilities,
       },
     }
 
+    -- Setup servers
+    mason_lspconfig.setup {
+      -- ensure_installed = vim.tbl_keys(servers),
+      handlers = {
+        function(server_name)
+          require('lspconfig')[server_name].setup(servers[server_name] or {
+            on_attach = lsp_attach,
+            capabilities = capabilities,
+          })
+        end,
+      },
+    }
 
-
-    -- cmp
     require('luasnip.loaders.from_vscode').lazy_load()
     require("luasnip.loaders.from_vscode").load_standalone({
+      -- add custom snippets to /snippets/<filetype>.code-snippets
+      -- then add the path to the snippets here
       path = "./snippets/cpp.code-snippets"
     })
 
@@ -102,22 +108,21 @@ return {
       mapping = cmp.mapping.preset.insert({
         ['<Tab>'] = cmp_action.luasnip_supertab(),
         ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-        -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        -- ['<C-Space>'] = cmp.mapping.complete(),
-        -- ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
       snippet = {
         expand = function(args)
-          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+          require('luasnip').lsp_expand(args.body) 
         end,
       },
       sources = cmp.config.sources({
         { name = 'copilot',  group_index = 2 },
         { name = 'nvim_lsp', group_index = 2 },
-        { name = 'luasnip',  group_index = 2 }, -- For luasnip users.
+        { name = 'luasnip',  group_index = 2 },
         { name = 'buffer',   group_index = 2 },
+        { name = 'path',     group_index = 2 },
       }),
       --- (Optional) Show source name in completion menu
       formatting = cmp_format,
