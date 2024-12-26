@@ -4,6 +4,7 @@
 -- vim.cmd.colorscheme("catppuccin")
 function ColorMyPencils(color)
   color = color or "tokyonight"
+  -- color = color or "gruvbox"
 
   vim.cmd.colorscheme(color)
 

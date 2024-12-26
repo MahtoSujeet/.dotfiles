@@ -5,7 +5,7 @@ return {
   dependencies = {
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v4.x' },
     { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-path' },  -- Add cmp-path for path completions
+    { 'hrsh7th/cmp-path' }, -- Add cmp-path for path completions
     { "L3MON4D3/LuaSnip",                 version = "v2.*" },
     { 'saadparwaiz1/cmp_luasnip' },
     { "rafamadriz/friendly-snippets" },
@@ -114,10 +114,11 @@ return {
       }),
       snippet = {
         expand = function(args)
-          require('luasnip').lsp_expand(args.body) 
+          require('luasnip').lsp_expand(args.body)
         end,
       },
       sources = cmp.config.sources({
+        -- { name = "supermaven" },
         { name = 'copilot',  group_index = 2 },
         { name = 'nvim_lsp', group_index = 2 },
         { name = 'luasnip',  group_index = 2 },
