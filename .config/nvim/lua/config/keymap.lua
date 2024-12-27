@@ -45,4 +45,4 @@ end
 
 -- Key mapping to run code
 set("n", "<leader>r", ":lua RunCode()<CR>", { desc = "Run code based on filetype" })
-set('n', '<F5>', ':lua RunCode()<CR>', { noremap = true, silent = true })
+set('n', "<C-'>", ':lua RunCode()<CR>', { noremap = true, silent = true })

@@ -7,7 +7,6 @@
     ],
     "body": [
       "#include <iostream>",
-      "#include <vector>",
       "using namespace std;",
       "",
       "int main(int argc, char *argv[]) {",
@@ -16,7 +15,7 @@
       "  return 0;",
       "}"
     ],
-    "description": "Boiler-Plate for cpp code.",
+    "description": "Boiler-Plate for C++ code.",
     "scope": "c,cpp"
   }
 }
