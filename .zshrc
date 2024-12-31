@@ -199,6 +199,7 @@ alias tree="tree -I 'node_modules|__pycache__'"
 alias yd="yarn dev"
 alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
+alias f=yazi
 
 # zoxide - better cd
 eval "$(zoxide init zsh)"
