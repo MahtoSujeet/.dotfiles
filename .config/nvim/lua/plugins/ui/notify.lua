@@ -2,6 +2,11 @@ return {
   "rcarriga/nvim-notify",
   enabled = false,
   config = function()
-    vim.notify = require("notify")
+    local notifier = require("notify")
+    notifier.setup({
+      timeout = 5000,
+      background_colour = "#000000",
+    })
+    vim.notify = notifier
   end
 }
