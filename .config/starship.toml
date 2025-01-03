@@ -19,10 +19,7 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
-$docker_context\
-$conda\
-[](fg:color_bg3 )\
+[](fg:color_blue )\
 $line_break\
 $cmd_duration \
 $character"""
