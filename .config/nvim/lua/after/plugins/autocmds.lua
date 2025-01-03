@@ -1,6 +1,6 @@
--- vim.api.nvim_create_autocmd("BufEnter", {
---   command = [[ColorizerAttachToBuffer]],
--- })
+vim.api.nvim_create_autocmd("BufEnter", {
+  command = [[ColorizerAttachToBuffer]],
+})
 
 -- Auto update plugins
 local function augroup(name)
