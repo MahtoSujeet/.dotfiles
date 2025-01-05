@@ -6,6 +6,7 @@
 
 # promptinit
 eval "$(starship init zsh)"
+# eval "$(oh-my-posh init zsh)"
 
 # This will set the default prompt to the walters theme
 # prompt walters
@@ -110,7 +111,7 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 fi
 
 ##### My bindings #############
-bindkey "\t" autosuggest-accept
+bindkey '\t' autosuggest-accept
 #: }}}
 
 #: Aliases {{{
@@ -202,8 +203,7 @@ alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias f=yazi
 
 # zoxide - better cd
-eval "$(zoxide init zsh)"
-alias cd="z"
+eval "$(zoxide init zsh --cmd=cd)"
 #}}}
 
 #: Configs {{{
@@ -212,7 +212,7 @@ export EDITOR='nvim'
 
 # zsh history
 export SAVEHIST=1000
-export HISTFILE=~/.zsh_history
+export HISTFILE=~/.cache/zhistory
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 
@@ -221,6 +221,7 @@ setopt INC_APPEND_HISTORY
 setopt appendhistory
 
 setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
+setopt HIST_IGNORE_SPACE
 #}}}
 
 #: Fixes {{{
