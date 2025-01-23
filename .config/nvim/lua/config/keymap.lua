@@ -32,6 +32,7 @@ function RunCode()
     cpp = 'g++ % && ./a.out',
     asm = 'gcc % -nostdlib -static && ./a.out',
     sh = 'if [ ! -x % ]; then chmod +x %; fi; ./%',
+
   }
 
   local command = commands[filetype]

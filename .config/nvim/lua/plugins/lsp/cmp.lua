@@ -32,9 +32,9 @@ return {
         ['go'] = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Go to type definition' },
         ['gr'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Find references' },
         ['gs'] = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Show signature help' },
-        ['<F2>'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename symbol' },
-        ['<F3>'] = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format code' },
-        ['<F4>'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code actions' },
+        ['<leader>lr'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename symbol' },
+        ['<leader>lf'] = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format code' },
+        ['<leader>ca'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code actions' },
         ['[d'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Previous diagnostic' },
         [']d'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
       }
@@ -110,7 +110,7 @@ return {
         ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
       snippet = {
         expand = function(args)

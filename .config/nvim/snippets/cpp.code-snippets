@@ -34,7 +34,10 @@
       "#define no cout << \"NO\" << '\\n'",
       "#define alice cout << \"Alice\" << '\\n'",
       "#define bob cout << \"Bob\" << '\\n'",
-      "const int MOD = 1e9 + 7;",
+      "#define all(x) x.begin(), x.end()",
+      "#define rall(x) x.rbegin(), x.rend()",
+      "#define MOD 1000000007",
+      "#define nl '\\n'",
       "",
       "template<typename T>",
       "void debugVector(vector<T>& v) {",
@@ -74,7 +77,7 @@
   "print": {
     "prefix": "print",
     "body": [
-      "cout << $1 << endl;"
+      "cout << $1 << '\\n';"
     ],
     "description": "Print to stdout."
   },
