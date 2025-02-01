@@ -3,23 +3,6 @@ return {
   event = "VeryLazy",
   lazy = false,
   version = false, -- set this if you want to always pull the latest change
-  opts = {
-    provider = "copilot",
-    auto_suggestions_provider = "claude",
-    ---@type AvanteSupportedProvider
-    copilot = {
-      endpoint = "https://api.githubcopilot.com",
-      model = "gpt-4o-2024-08-06",
-      proxy = nil,            -- [protocol://]host[:port] Use this proxy
-      allow_insecure = false, -- Allow insecure server connections
-      timeout = 30000,        -- Timeout in milliseconds
-      temperature = 0,
-      max_tokens = 4096,
-    },
-  },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
@@ -56,4 +39,21 @@ return {
       ft = { "markdown", "Avante" },
     },
   },
+  opts = {
+    provider = "copilot",
+    auto_suggestions_provider = "claude",
+    ---@type AvanteSupportedProvider
+    copilot = {
+      endpoint = "https://api.githubcopilot.com",
+      model = "gpt-4o-2024-08-06",
+      proxy = nil,            -- [protocol://]host[:port] Use this proxy
+      allow_insecure = false, -- Allow insecure server connections
+      timeout = 30000,        -- Timeout in milliseconds
+      temperature = 0,
+      max_tokens = 4096,
+    },
+  },
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = "make",
+  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 }

@@ -118,12 +118,12 @@ return {
         end,
       },
       sources = cmp.config.sources({
-        -- { name = "supermaven" },
-        { name = 'copilot',  group_index = 2 },
-        { name = 'nvim_lsp', group_index = 2 },
-        { name = 'luasnip',  group_index = 2 },
-        { name = 'buffer',   group_index = 2 },
-        { name = 'path',     group_index = 2 },
+        { name = "supermaven" },
+        { name = 'copilot',   group_index = 2 },
+        { name = 'nvim_lsp',  group_index = 2 },
+        { name = 'luasnip',   group_index = 2 },
+        { name = 'buffer',    group_index = 2 },
+        { name = 'path',      group_index = 2 },
       }),
       --- (Optional) Show source name in completion menu
       formatting = cmp_format,
