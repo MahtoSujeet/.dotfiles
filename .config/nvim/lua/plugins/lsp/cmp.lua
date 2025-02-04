@@ -37,12 +37,22 @@ return {
         ['<leader>ca'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code actions' },
         ['[d'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Previous diagnostic' },
         [']d'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
+        ['<leader>lq'] = { '<cmd>lua vim.diagnostic.set_loclist()<cr>', 'Set loclist (quick fix)' },
+        ['<leader>ll'] = { '<cmd>lua vim.diagnostic.open_float(0, { scope = "line" })<cr>', 'Show line diagnostics' },
+        ['<leader>lL'] = { '<cmd>lua vim.diagnostic.open_float(0, { scope = "project" })<cr>', 'Show project diagnostics' },
+        ['<leader>lw'] = { '<cmd>lua vim.diagnostic.open_float(0, { scope = "workspace" })<cr>', 'Show workspace diagnostics' },
+        ['<leader>lW'] = { '<cmd>lua vim.diagnostic.open_float(0, { scope = "document" })<cr>', 'Show document diagnostics' },
       }
 
       for k, v in pairs(maps) do
         vim.keymap.set('n', k, v[1], { desc = v[2], buffer = bufnr })
       end
     end
+
+    -- Configure LSP hover handler to add border
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = "rounded"
+    })
 
     -- LSP attach function
     local lsp_attach = function(client, bufnr)
