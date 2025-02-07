@@ -32,7 +32,14 @@ function RunCode()
     cpp = 'g++ % && ./a.out',
     asm = 'gcc % -nostdlib -static && ./a.out',
     sh = 'if [ ! -x % ]; then chmod +x %; fi; ./%',
-
+    javascript = 'node %',
+    typescript = 'node %',
+    rust = 'rustc % && ./a.out',
+    lua = 'lua %',
+    markdown = 'pandoc % -o %:r.html',
+    json = 'jq . %',
+    -- For latex files
+    latex = 'latexmk -pdf %',
   }
 
   local command = commands[filetype]
