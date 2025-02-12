@@ -1,107 +1,97 @@
 
 # There is no place like `$HOME`
 
-This config includes Hyprland, neovim and zsh.
+This configuration uses `Hyprdots` project as base for hyprland configuration.
 
 [![Last commit](https://img.shields.io/github/last-commit/MahtoSujeet/.dotfiles?&logo=github)](https://github.com/MahtoSujeet/.dotfiles)
 [![Size](https://img.shields.io/github/repo-size/MahtoSujeet/.dotfiles?color=green)](https://github.com/MahtoSujeet/.dotfiles)
 
-
-### Prerequisites
-
-1. `git` must be installed
-1. Your brain must be present in skull.
-
 --------------------------------
 
-# HYPRLAND SETUP
+## Installation
 
-To get started you'll need few utilities and some basic things, We'll go in steps as;
+1. Start with minimal install of Arch Linux.
 
-1. Adding Wayland & Xwayland
-1. Installing an AUR helper
-1. Installing hyprland and related dependencies
-1. Setting up audio, video, Brightness, wofi & Screenshot
-1. Installing and configuring app clients like Discord, Telegram
+    - Set `parallel_downloads` to 30 in `/etc/pacman.conf`
+    - Set mirrorlist to `Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch`
 
-## Setup
-### Setting Up Wayland and Xwayland
+1. Now for Hyprdots Installation
 
-If you are running something like Gnome, Kde, Sway, Qtile e.t.c you can skip this step and move to next one
+    - `pacman -S --needed git base-devel`
+    - Install paru
 
-```bash
-sudo pacman -Sy wayland libdrm pixman libxkbcommon python2 libxml2 \
-llvm libpng gegl mtdev xorg-xwayland  qt5-wayland qt6-wayland 
-```
-These dependencies will setup the base required for proper functioning of hyprland or any other window manager based on wayland
+      ```bash
+      git clone <https://aur.archlinux.org/paru-bin> && cd paru-bin && makepkg -si
+      ```
 
-Xwayland is requied to run some xorg specific dependencies without it you might feel lags or stutters while doing some task or some task might break
+    - Install hyde-cli-git
+      `paru -Sy hyde-cli-git`
 
-## Installing AUR Helper (Paru)
-```bash
-git clone https://aur.archlinux.org/paru-bin && cd paru-bin && makepkg -si
-```
+    - Install Hyde interactively
+      `Hyde-install`
 
-After Installing paru, check for any updates using Paru.
+1. Now to add dotfiles
+    Run the following piece of code in `$HOME` directory.
 
-## Installing hyprland and other related packages to make Hyprland functional
-```bash
-paru -S hyprland-bin hyprpaper waybar-hyprland-git xdg-desktop-portal-hyprland \
-wlroots xdg-desktop-portal polkit-kde-agent wofi thunar thunar-volman gvfs-mtp gvfs mtpfs
-```
+    ```bash
+    git clone --bare https://github.com/MahtoSujeet/.dotfiles.git $HOME/.dotfiles
+    function dotfiles {
+      /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+    }
+    mkdir -p .dotfiles-backup
+    dotfiles checkout
+    if [ $? = 0 ]; then
+      echo "Checked out dotfiles.";
+      else
+        echo "Backing up pre-existing dot files.";
+        dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+    fi;
+    dotfiles checkout
+    dotfiles config status.showUntrackedFiles no
+    ```
 
-## Setting up Volume, Brightness & other useful stuff
-```bash
-paru -S light pavucontrol alsa-utils mako mpv brave-bin nm-applet
-```
+    It takes the backup of current config files in `.dotfiles-backup` folder and installs remote config.
 
 -------------------------------------------------
-
 
 # Config installation
 
 Following are the general packages that you need.
+
 ```
 kitty neovim zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions \
 starship ntfs-3g intel-ucode npm
 ```
 
-Run the following piece of code in `$HOME` directory.
-```bash
-git clone --bare https://github.com/MahtoSujeet/.dotfiles.git $HOME/.dotfiles
-function dotfiles {
-   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
-}
-mkdir -p .dotfiles-backup
-dotfiles checkout
-if [ $? = 0 ]; then
-  echo "Checked out dotfiles.";
-  else
-    echo "Backing up pre-existing dot files.";
-    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
-fi;
-dotfiles checkout
-dotfiles config status.showUntrackedFiles no
-```
-It takes the backup of current config files in `.dotfiles-backup` folder and installs remote config.
+## Waybar config
 
----------------------------------------
+    Add following lines to the top of `~/.config/waybar/config.ctl`
+
+```
+0|36|bottom|( cpu memory custom/cpuinfo ) ( hyprland/workspaces mpris )|( idle_inhibitor clock ) |( network backlight pulseaudio pulseaudio#microphone custom/keybindhint ) ( privacy tray battery custom/power )
+1|36|top|( cpu memory custom/cpuinfo ) ( hyprland/workspaces mpris )|( idle_inhibitor clock ) |( network backlight pulseaudio pulseaudio#microphone custom/keybindhint ) ( privacy tray battery custom/power )
+  ```
+
+----------------------------------;
 
 # Other Useful stuff and fixes
 
 ## Bluetooth
+
 1. Install ```bluez blueman bluez-utils pulseaudio-bluetooth```
 1. `sudo systemctl enable bluetooth.service`
 1. `sudo systemctl start bluetooth.service`
 
 ## Thumbnail fix
-* Dolphin - Install `ffmpegthumbs` package.
-* Thunar/Nautilus - Install `ffmpeg ffmpegthumbnailer gst-libav`
 
-In case insalling these alone doesn't work, remove `~/.thumbnails`,
+- Dolphin - Install `ffmpegthumbs` package.
+- Thunar/Nautilus - Install `ffmpeg ffmpegthumbnailer gst-libav`
+
+In case installing these alone doesn't work, remove `~/.thumbnails`,
 then `ln -s $HOME/.cache/thumbnails $HOME/.thumbnails`
 
 ## Chaotic AUR
+
 First, install the primary key - it can then be used to install Chaotic AUR's keyring and mirrorlist.
 
 ```bash
@@ -118,13 +108,16 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 ```
 
 ## To mount NTFS
+
 1. Get UUID of disk with `lsblk -f`
 1. Add following to `/etc/fstab`
+
 ```
 UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=0022  0 0
 ```
 
 ## Add WARP+
+
 1. Install `cloudflare-warp-bin`
 1. `sudo systemctl enable --now warp-svc.service`
 1. `sudo systemctl stop systemd-resolved`
@@ -135,7 +128,9 @@ UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=00
 1. `warp-cli connect`
 
 ## Keyring related issue
+
 Here is the required commands to reset the keys.
+
 ```bash
 mv /etc/pacman.d/gnupg /root/pacman-key.bak
 pacman-key --init
@@ -147,7 +142,7 @@ pacman -Syy archlinux-keyring
 Make sure to update the system after this.
 
 ## Other Apps
-* `evince` - PDF Reader
-* `mpv` - Video Player (VLC sucks in Linux)
-* `imv` - Image Viewer
 
+- `evince` - PDF Reader
+- `mpv` - Video Player (VLC sucks in Linux)
+- `imv` - Image Viewer
