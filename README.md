@@ -58,19 +58,19 @@ This configuration uses `Hyprdots` project as base for hyprland configuration.
 
 Following are the general packages that you need.
 
-```
-kitty neovim zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions \
-starship ntfs-3g intel-ucode npm
+```txt
+kitty neovim zsh zsh-completions zsh-syntax-highlighting \
+zsh-autosuggestions starship ntfs-3g intel-ucode npm
 ```
 
 ## Waybar config
 
-    Add following lines to the top of `~/.config/waybar/config.ctl`
+Add following lines to the top of `~/.config/waybar/config.ctl`
 
-```
+```txt
 0|36|bottom|( cpu memory custom/cpuinfo ) ( hyprland/workspaces mpris )|( idle_inhibitor clock ) |( network backlight pulseaudio pulseaudio#microphone custom/keybindhint ) ( privacy tray battery custom/power )
 1|36|top|( cpu memory custom/cpuinfo ) ( hyprland/workspaces mpris )|( idle_inhibitor clock ) |( network backlight pulseaudio pulseaudio#microphone custom/keybindhint ) ( privacy tray battery custom/power )
-  ```
+```
 
 ----------------------------------;
 
