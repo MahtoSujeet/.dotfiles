@@ -72,7 +72,7 @@ Add following lines to the top of `~/.config/waybar/config.ctl`
 1|36|top|( cpu memory custom/cpuinfo ) ( hyprland/workspaces mpris )|( idle_inhibitor clock ) |( network backlight pulseaudio pulseaudio#microphone custom/keybindhint ) ( privacy tray battery custom/power )
 ```
 
-----------------------------------;
+------------------------------------
 
 # Other Useful stuff and fixes
 
