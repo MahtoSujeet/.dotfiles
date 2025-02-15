@@ -15,3 +15,4 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.wrap = true -- Enable line wrapping
 vim.opt.linebreak = true -- Wrap lines at convenient points
 vim.g.ai_cmp = true
+vim.lsp.handlers["textDocument/inlayHint"] = function() end
