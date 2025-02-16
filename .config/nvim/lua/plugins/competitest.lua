@@ -5,8 +5,15 @@ return {
     require("competitest").setup({
       compile_directory = ".",
       compile_command = {
-        c = { exec = "gcc", args = { "-Wall", "$(FNAME)", "-o", "./tests/$(FNOEXT)" } },
-        cpp = { exec = "g++", args = { "-Wall", "$(FNAME)", "-o", "./tests/$(FNOEXT)" } },
+        c = {
+          exec = "bash",
+          args = { "-c", '[[ ! -d "./tests" ]] && mkdir -p "./tests"; gcc -Wall "$(FNAME)" -o "./tests/$(FNOEXT)"' },
+        },
+        cpp = {
+          exec = "bash",
+          args = { "-c", '[[ ! -d "./tests" ]] && mkdir -p "./tests"; g++ -Wall "$(FNAME)" -o "./tests/$(FNOEXT)"' },
+          -- args = { "-Wall", "$(FNAME)", "-o", "./tests/$(FNOEXT)" },
+        },
       },
       running_directory = "./tests",
       testcases_directory = "./tests",
