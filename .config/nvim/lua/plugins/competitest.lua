@@ -3,14 +3,23 @@ return {
   dependencies = "MunifTanjim/nui.nvim",
   config = function()
     require("competitest").setup({
-      testcases_use_single_file = true,
+      compile_directory = ".",
+      compile_command = {
+        c = { exec = "gcc", args = { "-Wall", "$(FNAME)", "-o", "./tests/$(FNOEXT)" } },
+        cpp = { exec = "g++", args = { "-Wall", "$(FNAME)", "-o", "./tests/$(FNOEXT)" } },
+      },
+      running_directory = "./tests",
+      testcases_directory = "./tests",
+      -- testcases_use_single_file = false
     })
 
     local set = vim.keymap.set
 
-    set("n", "<leader>pr", "<cmd>CompetiTest run<CR>")
-    set("n", "<leader>pt", "<cmd>CompetiTest receive testcases<CR>")
-    set("n", "<leader>pp", "<cmd>CompetiTest receive problem<CR>")
-    set("n", "<leader>pc", "<cmd>CompetiTest receive contest<CR>")
+    set("n", "<leader>pr", "<cmd>CompetiTest run<CR>", { desc = "Run testcases" })
+    set("n", "<leader>pt", "<cmd>CompetiTest receive testcases<CR>", { desc = "Receive testcases" })
+    set("n", "<leader>pp", "<cmd>CompetiTest receive problem<CR>", { desc = "Receive problem" })
+    set("n", "<leader>pc", "<cmd>CompetiTest receive contest<CR>", { desc = "Receive contest" })
+    set("n", "<leader>pa", "<cmd>CompetiTest add testcase<CR>", { desc = "Add testcase" })
+    set("n", "<leader>pe", "<cmd>CompetiTest edit testcase<CR>", { desc = "Edit testcase" })
   end,
 }
