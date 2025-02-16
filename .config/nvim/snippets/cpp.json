@@ -2,7 +2,6 @@
   "boilerplate": {
     "prefix": [
       "bp",
-      "bit",
       "st"
     ],
     "body": [
@@ -20,14 +19,12 @@
   },
   "cp-boilerplate": {
     "prefix": [
-      "cp",
       "cp"
     ],
     "body": [
       "#include <bits/stdc++.h>",
       "using namespace std;",
       "",
-      "#define ll long long",
       "#define debug(x) cout << #x << \" is \" << x << endl;",
       "#define yes cout << \"YES\" << '\\n'",
       "#define no cout << \"NO\" << '\\n'",
@@ -36,7 +33,9 @@
       "#define all(x) x.begin(), x.end()",
       "#define rall(x) x.rbegin(), x.rend()",
       "#define MOD 1000000007",
-      "#define nl '\\n'",
+      "#define end '\\n'",
+      "",
+      "typedef long long ll;",
       "",
       "template<typename T>",
       "void debugVector(vector<T>& v) {",
@@ -71,20 +70,6 @@
       "}"
     ],
     "description": "Boilerplate for competitive programming in C++ with debugging utilities.",
-    "scope": "c,cpp"
-  },
-  "print": {
-    "prefix": "print",
-    "body": [
-      "cout << $1 << '\\n';"
-    ],
-    "description": "Print to stdout."
-  },
-  "scan": {
-    "prefix": "scan",
-    "body": [
-      "cin >> $1;"
-    ],
-    "description": "Scan from stdin."
+    "scope": "cpp"
   }
 }
