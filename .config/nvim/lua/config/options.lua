@@ -4,6 +4,8 @@
 
 vim.opt.relativenumber = false -- Show relative line numbers
 
+vim.opt.clipboard = ""
+
 -- Tab and indentation settings
 local tablength = 2
 vim.opt.tabstop = tablength -- Number of spaces that a <Tab> in the file counts for
