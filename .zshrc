@@ -50,7 +50,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # case insensitive path-completion
 # NOTE doesnt work with autosuggest tab key binding
-# zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
@@ -190,6 +190,10 @@ alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long li
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree --git-ignore' # list folder as tree
 
+# github copliot
+alias ghce="gh copilot explain"
+alias ghcs="gh copilot suggest"
+
 # other
 # alias neofetch="clear && neofetch"
 # alias fastfetch="clear && fastfetch"
@@ -201,6 +205,8 @@ alias yd="yarn dev"
 alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias f=yazi
+alias np=pnpm
+alias npm=pnpm
 
 # zoxide - better cd
 eval "$(zoxide init zsh --cmd=cd)"
@@ -222,12 +228,21 @@ setopt appendhistory
 
 setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
 setopt HIST_IGNORE_SPACE
+
+yazi() {
+  local cwd_file="/tmp/yazi-cwd-$USER"
+  command yazi --cwd-file="$cwd_file" "$@"
+  if [[ -f "$cwd_file" ]]; then
+    cd "$(cat "$cwd_file")"
+    rm -f "$cwd_file"
+  fi
+}
 #}}}
 
 #: Fixes {{{
 # for firefox wayland support & touch screen
-export MOZ_USE_XINPUT2=1
-export MOZ_ENABLE_WAYLAND=1
+# export MOZ_USE_XINPUT2=1
+# export MOZ_ENABLE_WAYLAND=1
 
 #}}}
 #
@@ -246,3 +261,4 @@ fi
 if [[ "$TERM" == "xterm-kitty" ]]; then
     fastfetch
 fi
+
